@@ -1,6 +1,7 @@
 package com.example.lxiao.aahelper.mainactivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.GridView;
 
 import com.example.lxiao.aahelper.baseactivity.ActivityFrame;
@@ -27,7 +28,10 @@ public class MainActivity extends ActivityFrame {
         mgridview  = (GridView)findViewById(R.id.centergridview);
     }
     private void binddata(){
+
         mgridview.setAdapter(madapter);
+        Log.v("sk", "bind data");
+
     }
 
 

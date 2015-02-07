@@ -2,10 +2,15 @@
 <resources>
 
     <string name="app_name">AAhelp</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="_smyappname">AA小助手</string>
     <string name="_sbottomtext">欢迎你使用AA分账</string>
     <string name="title_activity_activity_frame">ActivityFrame</string>
+    <string name="_sconsumption">记录消费</string>
+    <string name="_ssearch">查询消费</string>
+    <string name="_sstatistic">统计管理</string>
+    <string name="_sbook">账本管理</string>
+    <string name="_stype">类别管理</string>
+    <string name="_suser">人员管理</string>
 
 </resources>
