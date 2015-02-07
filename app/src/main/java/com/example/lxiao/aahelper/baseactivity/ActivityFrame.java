@@ -1,6 +1,7 @@
 package com.example.lxiao.aahelper.baseactivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +25,7 @@ public class ActivityFrame extends ActivityBase {
        View _view = LayoutInflater.from(this).inflate(presId,null);
        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT);
       _smain_body.addView(_view,layoutParams);
+       Log.v("sk", "appendview");
    }
 
 }

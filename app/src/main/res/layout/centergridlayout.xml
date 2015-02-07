@@ -8,5 +8,6 @@
         android:numColumns="3"
         android:id="@+id/centergridview"
         android:verticalSpacing="50dp"
+       android:layout_centerInParent="true"
          />
 </RelativeLayout>
