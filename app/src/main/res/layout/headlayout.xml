@@ -11,9 +11,9 @@
         android:text="@string/_smyappname"
         android:id="@+id/tv_headname"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+
         android:layout_centerVertical="true"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:paddingLeft="10dp"
         />
 </RelativeLayout>

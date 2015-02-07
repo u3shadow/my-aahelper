@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ActionMenuView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.example.lxiao.aahelper.R;
@@ -96,6 +98,9 @@ public class AdapterBase implements ListAdapter {
            mhost = (host) convertView.getTag();
         }
         mhost.mimageview.setImageResource(imageid[position]);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(80,80);
+        mhost.mimageview.setLayoutParams(layoutParams);
+        mhost.mimageview.setScaleType(ImageView.ScaleType.FIT_XY);
         mhost.mtextview.setText(textid[position]);
         Log.v("sk","adpter running");
         return convertView;
