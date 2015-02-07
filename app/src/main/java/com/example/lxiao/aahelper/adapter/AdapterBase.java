@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ActionMenuView;
+import android.widget.Adapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -17,16 +19,7 @@ import com.example.lxiao.aahelper.R;
 /**
  * Created by U3 on 2015/2/5.
  */
-public class AdapterBase implements ListAdapter {
-    @Override
-    public boolean areAllItemsEnabled() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return false;
-    }
+public class AdapterBase extends BaseAdapter {
 
     class host {
         ImageView mimageview;
@@ -56,15 +49,8 @@ public class AdapterBase implements ListAdapter {
         textid[5] = mcontext.getString(R.string._suser);
     }
 
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
 
-    }
 
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-
-    }
 
     @Override
     public int getCount() {
@@ -82,11 +68,6 @@ public class AdapterBase implements ListAdapter {
     }
 
     @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(mcontext).inflate(R.layout.gridiconlayout, null);
@@ -98,7 +79,7 @@ public class AdapterBase implements ListAdapter {
            mhost = (host) convertView.getTag();
         }
         mhost.mimageview.setImageResource(imageid[position]);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(80,80);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150,150);
         mhost.mimageview.setLayoutParams(layoutParams);
         mhost.mimageview.setScaleType(ImageView.ScaleType.FIT_XY);
         mhost.mtextview.setText(textid[position]);
@@ -106,18 +87,5 @@ public class AdapterBase implements ListAdapter {
         return convertView;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
 
-    @Override
-    public int getViewTypeCount() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
 }

@@ -12,5 +12,9 @@
     <string name="_sbook">账本管理</string>
     <string name="_stype">类别管理</string>
     <string name="_suser">人员管理</string>
+    <string-array name="_amainlistmenu">
+        <item>用户管理</item>
+        <item>新表单项目</item>
+    </string-array>
 
 </resources>

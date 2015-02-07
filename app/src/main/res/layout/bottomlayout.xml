@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/bottombackground"
-    android:layout_height="50dp">
+    android:layout_alignParentBottom="true"
+    android:layout_height="68dp">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="4dp">
+        android:layout_height="68dp"
+        android:id="@+id/bottompic"
+        android:background="@drawable/bottombackground"
+
+        >
 
         <ImageView
             android:id="@+id/iv_bottomimage"
@@ -37,6 +39,21 @@
             android:layout_centerVertical="true"
             android:background="@drawable/menuicon"
             android:layout_marginRight="20dp" />
+
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/menulist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/bottompic"
+        >
+        <ListView
+
+            android:id="@+id/bottomlistview"
+            style="@style/listmenutype"
+            android:listSelector="@drawable/griditemselecter"
+            ></ListView>
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -26,6 +26,7 @@ public class MainActivity extends ActivityFrame {
     }
     private void initview(){
         mgridview  = (GridView)findViewById(R.id.centergridview);
+        createslidemenu(R.array._amainlistmenu);
     }
     private void binddata(){
 

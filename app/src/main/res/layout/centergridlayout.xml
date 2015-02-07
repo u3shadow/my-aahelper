@@ -8,6 +8,7 @@
         android:numColumns="3"
         android:id="@+id/centergridview"
         android:verticalSpacing="50dp"
+        android:listSelector="@drawable/griditemselecter"
        android:layout_centerInParent="true"
          />
 </RelativeLayout>

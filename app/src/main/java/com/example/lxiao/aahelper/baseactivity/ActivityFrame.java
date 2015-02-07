@@ -8,6 +8,8 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.example.lxiao.aahelper.R;
+import com.example.lxiao.aahelper.UI.SliderMenuItem;
+import com.example.lxiao.aahelper.UI.SliderMenuView;
 
 
 public class ActivityFrame extends ActivityBase {
@@ -27,5 +29,14 @@ public class ActivityFrame extends ActivityBase {
       _smain_body.addView(_view,layoutParams);
        Log.v("sk", "appendview");
    }
-
+   public void createslidemenu(int menuid)
+   {
+       SliderMenuView iview = new SliderMenuView(this);
+       String[] mlist = getResources().getStringArray(menuid);
+       for(int i = 0;i < mlist.length; i++)
+       {
+           SliderMenuItem mitem = new SliderMenuItem(i, mlist[i]);
+           iview.add(mitem);
+       }
+   }
 }

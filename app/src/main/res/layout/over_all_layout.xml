@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/headlayout"
+        android:id="@+id/headlayout1"
         layout="@layout/headlayout"></include>
 
 
@@ -13,14 +13,12 @@
     <include
         android:id="@+id/bottomlayout1"
         layout="@layout/bottomlayout"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:layout_alignParentBottom="true"></include>
+></include>
     <LinearLayout
         android:id="@+id/maincenterlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@id/bottomlayout1"
-        android:layout_below="@id/headlayout"
+        android:layout_below="@id/headlayout1"
         android:orientation="vertical"></LinearLayout>
 </RelativeLayout>
