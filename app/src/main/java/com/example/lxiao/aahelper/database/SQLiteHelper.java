@@ -22,6 +22,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     {
         if(instance == null)
         {
+            dataBaseConfig = SQLiteDataBaseConfig.getinstance(pcontext);
             instance = new SQLiteHelper(pcontext);
         }
         else;

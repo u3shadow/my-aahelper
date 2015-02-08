@@ -16,5 +16,12 @@
         <item>用户管理</item>
         <item>新表单项目</item>
     </string-array>
+    <string-array name="_ainituser">
+        <item>张三</item>
+        <item>张四</item>
+    </string-array>
+    <string-array name="_sdatabasename">
+        <item>User</item>
+    </string-array>
 
 </resources>

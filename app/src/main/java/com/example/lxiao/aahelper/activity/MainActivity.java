@@ -1,4 +1,4 @@
-package com.example.lxiao.aahelper.mainactivity;
+package com.example.lxiao.aahelper.activity;
 
 import android.os.Bundle;
 import android.util.Log;

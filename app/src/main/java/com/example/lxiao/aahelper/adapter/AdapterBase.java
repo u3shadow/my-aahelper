@@ -15,6 +15,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.example.lxiao.aahelper.R;
 
+import java.util.List;
+
 
 /**
  * Created by U3 on 2015/2/5.
@@ -29,6 +31,7 @@ public class AdapterBase extends BaseAdapter {
     private String[] textid = new String[6];
     private host mhost;
     private Context mcontext;
+
   int[] imageid   = new int[]{
             R.drawable.consumption,
             R.drawable.search,

@@ -59,8 +59,14 @@ public abstract class SQLiteDALbase implements SQLiteHelper.sqlitedatatable{
         pcursor.close();
         return mlist;
     }
+    protected List getlist(String pcondition)
+    {
+        Cursor mcursor = Execsql(pcondition);
+        return cursortolist(mcursor);
+    }
     protected abstract String[] GetTableNameAndPk();
-
+    public Context getcontext()
+    {return mcontext;}
     public Cursor Execsql(String psql) {
         return getdatabase().rawQuery(psql, null);
     }
