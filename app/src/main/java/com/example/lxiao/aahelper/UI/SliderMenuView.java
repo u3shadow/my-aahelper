@@ -1,7 +1,9 @@
 package com.example.lxiao.aahelper.UI;
 
 import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -20,15 +22,19 @@ public class SliderMenuView {
     private Activity mActivity;
     private RelativeLayout mrelativelayout;
     private ListView mlistview;
+    private listitemclicklistener mlistclicklistener;
 
     public SliderMenuView(Activity sAcitivity) {
         mActivity = sAcitivity;
+        //mlistclicklistener = (OnSlideMenuListener)sAcitivity
         initver();
         initview();
         initlistener();
         bindlist();
     }
-
+    public interface  OnSlideMenuListener{
+        public abstract void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem);
+    }
     public void initver() {
         mswitch = true;
         mlist = new ArrayList();
@@ -43,6 +49,18 @@ public class SliderMenuView {
 
     public void initlistener() {
         mrelativelayout.setOnClickListener(new sliderclicklistener());
+        mrelativelayout.setFocusableInTouchMode(true);
+        mrelativelayout.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_MENU&&event.getAction() == KeyEvent.ACTION_UP)
+                {
+                    Toggle();
+                }
+                return false;
+            }
+        });
+
 
     }
 
@@ -61,7 +79,7 @@ public class SliderMenuView {
         mlistview = (ListView)mActivity.findViewById((R.id.bottomlistview));
         ListItemAdapter mlistadapter = new ListItemAdapter(mlist,mActivity);
         mlistview.setAdapter(mlistadapter);
-    }
+        mlistview.setOnItemClickListener(new listitemclicklistener());}
 
     private void onslidemenuclick() {
 
@@ -88,11 +106,12 @@ public class SliderMenuView {
             Toggle();
         }
     }
-    class listitemclicklistener implements View.OnClickListener {
+    class listitemclicklistener implements AdapterView.OnItemClickListener {
 
         @Override
-        public void onClick(View v) {
-
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            SliderMenuItem mitem = (SliderMenuItem) parent.getItemAtPosition(position);
+           // mlistclicklistener.
         }
     }
 }
