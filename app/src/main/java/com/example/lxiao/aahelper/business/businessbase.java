@@ -4,6 +4,7 @@ import android.content.Context;
 
 /**
  * Created by U3 on 2015/2/9.
+ * contain some often use method
  */
 public class businessbase {
     private Context mcontext;

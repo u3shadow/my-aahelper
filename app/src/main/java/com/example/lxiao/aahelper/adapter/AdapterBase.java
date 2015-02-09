@@ -22,6 +22,7 @@ public class AdapterBase extends BaseAdapter{
         mcontext = c;
         setlist(plist);
     }
+    public List getlist(){return mlist;}
     public void setlist(List plist)
     {
         mlist = plist;

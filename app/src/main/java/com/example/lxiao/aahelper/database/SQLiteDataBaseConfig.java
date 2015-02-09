@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class SQLiteDataBaseConfig {
     private static String DATABASE_NAME = "AAhelper";
-    private static int version;
+    private static int version = 1;
     private Context mcontext;
     private static SQLiteDataBaseConfig instance;
     private SQLiteDataBaseConfig(Context pcontext)
@@ -40,11 +40,12 @@ public class SQLiteDataBaseConfig {
     {
         return version;
     }
-    public ArrayList gettable()//unknow means
+
+    public ArrayList gettable()//get DAL class name and path by XML resource
     {
         ArrayList list = new ArrayList();
-        String[] mstring = mcontext.getResources().getStringArray(R.array._sdatabasename);
-        String path = mcontext.getPackageName()+".databaseDAL.SQLiteDALbase.";
+        String[] mstring = mcontext.getResources().getStringArray(R.array._SQLiteDALclassName);
+        String path = mcontext.getPackageName()+".databaseDAL.";
         for(int i = 0; i < mstring.length; i++)
         {
             list.add(path+mstring[i]);

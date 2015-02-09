@@ -46,7 +46,8 @@ public class adapteruser extends AdapterBase{
             else{
             mhost = (host)convertView.getTag();
         }
-        mhost.username.setText(mlist.get(position).getMusername());
+        User _user = (User)getlist().get(position);
+        mhost.username.setText(_user.getMusername());
         mhost.userpic.setImageResource(R.drawable.user);
         return convertView;
     }

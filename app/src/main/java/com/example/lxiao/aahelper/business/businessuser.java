@@ -11,59 +11,62 @@ import java.util.List;
 
 /**
  * Created by U3 on 2015/2/9.
+ * to use dal more convenience
  */
-public class businessuser extends businessbase{
+public class businessuser extends businessbase {
     private SQLiteDALuser mdal;
     private Context mcontext;
 
     public businessuser(Context pcontext) {
         super(pcontext);
         mdal = new SQLiteDALuser(pcontext);
-       // mcontext = pcontext;
+        // mcontext = pcontext;
     }
 
+    //Insert user object by SQLiteDALuser insertuser(user) method
     public boolean insert(User puser) {
         return mdal.insertuser(puser);
     }
 
+    //delete user  by id use SQLiteDALuser deleteuser(condition)
     public boolean deleteuserbyid(int pid) {
         String mcondition = "And UserId = " + pid;
         return mdal.deleteuser(mcondition);
     }
 
+    //delete user  by id use SQLiteDALuser updateuser(condition,user)
     public void update(User puser) {
         String mcondition = " UserId = " + puser.getMuserid();
         mdal.updateuser(mcondition, puser);
 
     }
-    public List<User> getusers(String pcondition)
-    {
-     return  mdal.getuser(pcondition);
+
+    //Get user list by SQLiteDALuser getuser(condition) method
+    public List<User> getusers(String pcondition) {
+        return mdal.getuser(pcondition);
     }
-    public User getuserbyid(int id)
-    {
-       List<User> mlist = mdal.getuser( " And UserId = "+id);
-        if(mlist.size() > 0)
+
+    //Get user  by id use SQLiteDALuser getuser(condition) method
+    public User getuserbyid(int id) {
+        List<User> mlist = mdal.getuser(" And UserId = " + id);
+        if (mlist.size() > 0)
             return mlist.get(0);
         else
             return null;
     }
-    public List<User> getuserlistbyid(String[] id)
-    {
+
+    //Get user  by id array use SQLiteDALuser getuserbyid(condition) method
+    public List<User> getuserlistbyid(String[] id) {
         List<User> mlist = new ArrayList<User>();
-        for(int i = 0;i < id.length;i++){
-        User muser =  getuserbyid(Integer.getInteger(id[i]));
-           mlist.add(muser);
+        for (int i = 0; i < id.length; i++) {
+            User muser = getuserbyid(Integer.valueOf(id[i]));
+            mlist.add(muser);
         }
         return mlist;
     }
-    public List<User> getnothideuser()
-    {
-        List<User> asdf = mdal.getuser(" And DeleteState = 1");
-        if(asdf.isEmpty())
-        {
-            Log.v("sk", "Empty");
-        }
-        return asdf;
+
+    //use getuser method to get not deleted user list
+    public List<User> getnothideuser() {
+        return mdal.getuser(" And DeleteState = 1");
     }
 }

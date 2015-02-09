@@ -60,11 +60,11 @@ public class MainActivity extends ActivityFrame implements SliderMenuView.OnSlid
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             String _menuname = (String)parent.getAdapter().getItem(position);
-           /* if(_menuname.equals(getString(R.string._suser)))
+            if(_menuname.equals(getString(R.string._suser)))
             {
                 openactivity(ActivityUser.class);
             return;
-            }*/
+            }
         }
     }
 }

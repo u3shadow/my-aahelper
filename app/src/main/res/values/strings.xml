@@ -20,8 +20,8 @@
         <item>张三</item>
         <item>张四</item>
     </string-array>
-    <string-array name="_sdatabasename">
-        <item>User</item>
+    <string-array name="_SQLiteDALclassName">
+        <item>SQLiteDALuser</item>
     </string-array>
 
 </resources>

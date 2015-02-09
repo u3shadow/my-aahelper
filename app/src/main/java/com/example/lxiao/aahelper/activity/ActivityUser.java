@@ -31,7 +31,7 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
     }
     public void binddata()
     {
-     // lvuserlist.setAdapter(madapter);
+     lvuserlist.setAdapter(madapter);
     }
     @Override
     public void initvar() {

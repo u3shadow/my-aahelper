@@ -86,7 +86,7 @@ public class AdapterBaseTest extends BaseAdapter {
         mhost.mimageview.setLayoutParams(layoutParams);
         mhost.mimageview.setScaleType(ImageView.ScaleType.FIT_XY);
         mhost.mtextview.setText(textid[position]);
-        Log.v("sk","adpter running");
+       // Log.v("sk","adpter running");
         return convertView;
     }
 

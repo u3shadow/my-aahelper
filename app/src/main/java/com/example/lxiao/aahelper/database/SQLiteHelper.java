@@ -17,7 +17,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     private static SQLiteDataBaseConfig dataBaseConfig;//user to get database name and version
     private static SQLiteHelper instance;
     private Context mcontext;
-    private Reflection mreflection = new Reflection();
+    private Reflection mreflection;
     private SQLiteHelper(Context context)
     {
        super(context,dataBaseConfig.getdatabasename(),null,dataBaseConfig.getversion());
@@ -38,13 +38,14 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return dataBaseConfig.gettable();
     }
     @Override
-    public void onCreate(SQLiteDatabase db) //create table
+    public void onCreate(SQLiteDatabase db) //get
     {
+        mreflection = new Reflection();
         ArrayList<String> _Arraylist = dataBaseConfig.gettable();
         for(int i = 0;i <_Arraylist.size();i++) {
             try {
-                SQLiteDataTable _SQLiteDataTable = (SQLiteDataTable) mreflection.newInstance(_Arraylist.get(i),new Object[]{mcontext},new Class[]{Context.class});
-                _SQLiteDataTable.oncreate(db);
+                ((SQLiteDataTable)mreflection.newInstance(_Arraylist.get(i),new Object[]{mcontext},new Class[]{Context.class})).oncreate(db);
+
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
