@@ -43,7 +43,7 @@ public  class ListItemAdapter extends baselistitemadapter {
         }
         SliderMenuItem mitem = (SliderMenuItem)getlist().get(position);
         mhost.mtextview.setText(mitem.getTitle());
-        Log.v("sk", "adpter running");
+        //Log.v("sk", "adpter running");
         return convertView;
     }
 

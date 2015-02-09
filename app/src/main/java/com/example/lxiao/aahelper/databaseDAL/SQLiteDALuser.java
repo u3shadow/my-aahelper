@@ -10,10 +10,10 @@ import com.example.lxiao.aahelper.model.User;
 import com.example.lxiao.aahelper.utility.DateTools;
 
 import java.util.List;
-import java.util.concurrent.locks.Condition;
 
 /**
  * Created by lxiao on 2015/2/8.
+ * implement action on user
  */
 public class SQLiteDALuser extends SQLiteDALbase {
 
@@ -35,7 +35,7 @@ public class SQLiteDALuser extends SQLiteDALbase {
     protected String[] GetTableNameAndPk() {
         return new String[]{"User", "UserID"};
     }
-
+    //create table by implement interface method
     @Override
     public void oncreate(SQLiteDatabase qdatabase) {
         StringBuilder s_CreateTableScript = new StringBuilder();
@@ -55,7 +55,7 @@ public class SQLiteDALuser extends SQLiteDALbase {
     public void upgrate(SQLiteDatabase qdatabase) {
 
     }
-
+    //insert
     public boolean insertuser(User puser) {
         ContentValues mcontentvalue = getcontentvalue(puser);
         long mid = getdatabase().insert(GetTableNameAndPk()[0], null, mcontentvalue);
@@ -71,7 +71,7 @@ public class SQLiteDALuser extends SQLiteDALbase {
         return mcontentvalue;
     }
 
-    public boolean deleteuser( String pcondition) {
+    public boolean deleteuser(String pcondition) {
         return Delete(GetTableNameAndPk()[0], pcondition);
     }
 
@@ -89,8 +89,8 @@ public class SQLiteDALuser extends SQLiteDALbase {
         String[] mstring = getcontext().getResources().getStringArray(R.array._ainituser);
         for (int i = 0; i < mstring.length; i++) {
             muser.setMusername(mstring[i]);
-        ContentValues mcontentvalue = getcontentvalue(muser);
-            getdatabase().insert(GetTableNameAndPk()[0],null,mcontentvalue);
+            ContentValues mcontentvalue = getcontentvalue(muser);
+            getdatabase().insert(GetTableNameAndPk()[0], null, mcontentvalue);
         }
     }
 }

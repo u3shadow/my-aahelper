@@ -1,6 +1,7 @@
 package com.example.lxiao.aahelper.UI;
 
 import android.app.Activity;
+import android.support.v7.internal.widget.AdapterViewCompat;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,19 +23,17 @@ public class SliderMenuView {
     private Activity mActivity;
     private RelativeLayout mrelativelayout;
     private ListView mlistview;
-    private listitemclicklistener mlistclicklistener;
+    private OnSlideMenuListener mlistclicklistener;//user to cast activity to interface
 
     public SliderMenuView(Activity sAcitivity) {
         mActivity = sAcitivity;
-        //mlistclicklistener = (OnSlideMenuListener)sAcitivity
+        mlistclicklistener = (OnSlideMenuListener)sAcitivity;//cast activity witch implement this interface
         initver();
         initview();
         initlistener();
         bindlist();
     }
-    public interface  OnSlideMenuListener{
-        public abstract void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem);
-    }
+
     public void initver() {
         mswitch = true;
         mlist = new ArrayList();
@@ -49,7 +48,8 @@ public class SliderMenuView {
 
     public void initlistener() {
         mrelativelayout.setOnClickListener(new sliderclicklistener());
-        mrelativelayout.setFocusableInTouchMode(true);
+        mrelativelayout.setFocusableInTouchMode(true);//if not set key press event dont dispatch to view
+        //open or close the menue when menue key pressed
         mrelativelayout.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -111,7 +111,10 @@ public class SliderMenuView {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             SliderMenuItem mitem = (SliderMenuItem) parent.getItemAtPosition(position);
-           // mlistclicklistener.
+            mlistclicklistener.onSlideMenuItemClick(view, mitem);//call back listener
         }
     }
+    public interface  OnSlideMenuListener{
+        public abstract void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem);
+    }//user to callback , activity implement it
 }

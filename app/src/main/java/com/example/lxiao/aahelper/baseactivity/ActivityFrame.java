@@ -29,7 +29,7 @@ public class ActivityFrame extends ActivityBase {
       _smain_body.addView(_view,layoutParams);
        Log.v("sk", "appendview");
    }
-   public void createslidemenu(int menuid)
+   public void createslidemenu(int menuid)//get item from id and set to menue
    {
        SliderMenuView iview = new SliderMenuView(this);
        String[] mlist = getResources().getStringArray(menuid);

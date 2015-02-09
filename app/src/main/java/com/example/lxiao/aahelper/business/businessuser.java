@@ -1,6 +1,7 @@
 package com.example.lxiao.aahelper.business;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.lxiao.aahelper.databaseDAL.SQLiteDALuser;
 import com.example.lxiao.aahelper.model.User;
@@ -17,6 +18,8 @@ public class businessuser extends businessbase{
 
     public businessuser(Context pcontext) {
         super(pcontext);
+        mdal = new SQLiteDALuser(pcontext);
+       // mcontext = pcontext;
     }
 
     public boolean insert(User puser) {
@@ -56,6 +59,11 @@ public class businessuser extends businessbase{
     }
     public List<User> getnothideuser()
     {
-        return mdal.getuser(" And DeleteState = 1");
+        List<User> asdf = mdal.getuser(" And DeleteState = 1");
+        if(asdf.isEmpty())
+        {
+            Log.v("sk", "Empty");
+        }
+        return asdf;
     }
 }

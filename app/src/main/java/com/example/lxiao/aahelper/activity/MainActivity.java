@@ -2,16 +2,23 @@ package com.example.lxiao.aahelper.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
+import com.example.lxiao.aahelper.UI.SliderMenuItem;
+import com.example.lxiao.aahelper.UI.SliderMenuView;
+import com.example.lxiao.aahelper.adapter.AdapterBaseTest;
 import com.example.lxiao.aahelper.baseactivity.ActivityFrame;
 import com.example.lxiao.aahelper.R;
-import com.example.lxiao.aahelper.adapter.AdapterBase;
+
+import static android.widget.AdapterView.OnItemClickListener;
 
 
-public class MainActivity extends ActivityFrame {
+public class MainActivity extends ActivityFrame implements SliderMenuView.OnSlideMenuListener {
     private GridView mgridview;
-    private AdapterBase madapter;
+    private AdapterBaseTest madapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,15 +26,23 @@ public class MainActivity extends ActivityFrame {
         appendmainbody(R.layout.centergridlayout);
         initvar();
         initview();
+        initlistener();
         binddata();
     }
-    private void initvar(){
-        madapter = new AdapterBase(this);
+    public void initvar(){
+        madapter = new AdapterBaseTest(this);
     }
-    private void initview(){
+    public void initview(){
         mgridview  = (GridView)findViewById(R.id.centergridview);
         createslidemenu(R.array._amainlistmenu);
     }
+
+    @Override
+    public void initlistener() {
+        super.initlistener();
+        mgridview.setOnItemClickListener(new onappgridclicklistener());
+    }
+
     private void binddata(){
 
         mgridview.setAdapter(madapter);
@@ -36,4 +51,20 @@ public class MainActivity extends ActivityFrame {
     }
 
 
+    @Override
+    public void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem) {
+        Toast.makeText(this,pslideMenuItem.getTitle(),Toast.LENGTH_LONG).show();
+    }
+    private class onappgridclicklistener implements OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            String _menuname = (String)parent.getAdapter().getItem(position);
+           /* if(_menuname.equals(getString(R.string._suser)))
+            {
+                openactivity(ActivityUser.class);
+            return;
+            }*/
+        }
+    }
 }

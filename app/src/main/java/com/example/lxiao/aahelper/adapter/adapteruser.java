@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by U3 on 2015/2/9.
  */
-public class adapteruser extends BaseAdapter{
+public class adapteruser extends AdapterBase{
 
     class host{
         ImageView userpic;
@@ -28,35 +28,17 @@ public class adapteruser extends BaseAdapter{
     private host mhost;
     private Context mcontext;
     public adapteruser(Context c) {
-
+        super(c,null);
         businessuser mbusiness = new businessuser(c);
         List list = mbusiness.getnothideuser();
         setlist(list);
         mcontext = c;
     }
-    private void setlist(List plist){
-        mlist = plist;
-    }
-    @Override
-    public int getCount() {
-        return mlist.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mlist.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null)
         {
-            convertView = LayoutInflater.from(mcontext).inflate(R.layout.useritemlayout,null);
+            convertView = getinflater().inflate(R.layout.useritemlayout, null);
             mhost.username = (TextView)convertView.findViewById(R.id.tv_username);
             mhost.userpic = (ImageView)convertView.findViewById(R.id.iv_userimage);
             convertView.setTag(mhost);

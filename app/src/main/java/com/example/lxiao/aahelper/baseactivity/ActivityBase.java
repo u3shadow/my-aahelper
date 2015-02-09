@@ -17,4 +17,8 @@ public class ActivityBase extends Activity{
         Intent mintent = new Intent(this,activity);
         startActivity(mintent);
     }
+    public void initvar()
+    {}//init var
+    public void initview(){}//init view
+    public void initlistener(){}//init listener
 }

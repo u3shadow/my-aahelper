@@ -8,7 +8,7 @@ import java.util.Date;
 public class User {
     private int muserid;
     private String musername;
-    private int mdeletestate = -1;
+    private int mdeletestate = -1;//int for more state(boolean only support two)
 
     public int getMuserid() {
         return muserid;
