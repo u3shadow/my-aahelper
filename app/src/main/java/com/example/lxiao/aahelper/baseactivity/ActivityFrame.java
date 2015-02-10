@@ -13,7 +13,7 @@ import com.example.lxiao.aahelper.UI.SliderMenuView;
 
 
 public class ActivityFrame extends ActivityBase {
-
+    private SliderMenuView iview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class ActivityFrame extends ActivityBase {
    }
    public void createslidemenu(int menuid)//get item from id and set to menue
    {
-       SliderMenuView iview = new SliderMenuView(this);
+       iview = new SliderMenuView(this);
        String[] mlist = getResources().getStringArray(menuid);
        for(int i = 0;i < mlist.length; i++)
        {
@@ -39,4 +39,12 @@ public class ActivityFrame extends ActivityBase {
            iview.add(mitem);
        }
    }
+    public void closeslidemenu()
+    {
+        iview.Toggle();
+    }
+    public LayoutInflater getlayoutinflater()
+    {
+        return LayoutInflater.from(this);
+    }
 }

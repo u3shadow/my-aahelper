@@ -9,10 +9,10 @@
     android:layout_width="50dp"
     android:layout_height="50dp" />
     <TextView
+        style="@style/textstyle"
         android:id="@+id/tv_username"
         android:layout_toRightOf="@id/iv_userimage"
         android:layout_width="wrap_content"
-        android:textSize="20dp"
         android:layout_centerInParent="true"
         android:layout_height="match_parent" />
 </RelativeLayout>

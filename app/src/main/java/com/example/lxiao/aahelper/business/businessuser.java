@@ -69,4 +69,15 @@ public class businessuser extends businessbase {
     public List<User> getnothideuser() {
         return mdal.getuser(" And DeleteState = -1");
     }
+    //if this user is in database
+    public boolean isuserexist(String pusername, int puserid)
+    {
+        String condition = " And UserName = '"+pusername+"'";
+        condition += " And UserId <> "+puserid;
+        List<User> _list = getusers(condition);
+        if(_list.size() > 0)
+            return true;
+        else
+            return false;
+    }
 }

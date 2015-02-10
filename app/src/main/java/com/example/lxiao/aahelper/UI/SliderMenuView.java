@@ -64,7 +64,7 @@ public class SliderMenuView {
 
     }
 
-    private void Toggle() {
+    public void Toggle() {
         if (mswitch) {
             open();
         } else

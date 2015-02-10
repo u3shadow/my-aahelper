@@ -12,9 +12,20 @@
     <string name="_sbook">账本管理</string>
     <string name="_stype">类别管理</string>
     <string name="_suser">人员管理</string>
+    <string name="_suserhint">请输入用户名</string>
+    <string name="_susertype">%s用户</string>
+    <string name="_sedituser">修改</string>
+    <string name="_sadduser">新增</string>
+    <string name="_sbuttonsavetext">保存</string>
+    <string name="_sbuttoncanceltext">取消</string>
+    <string name="_snullusername">用户名不能为空</string>
+    <string name="_sillegleusername">用户名不合法，必须为字母数字或者汉字</string>
+    <string name="_suserisexist">用户名已存在</string>
+    <string name="_sinsertsuccess">新增用户成功</string>
+    <string name="_seditsuccess">修改用户成功</string>
     <string-array name="_amainlistmenu">
-        <item>用户管理</item>
         <item>新表单项目</item>
+        <item>用户管理</item>
     </string-array>
     <string-array name="_ainituser">
         <item>隔壁老王</item>
