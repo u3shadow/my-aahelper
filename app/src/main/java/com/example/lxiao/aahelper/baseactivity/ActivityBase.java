@@ -1,9 +1,13 @@
 package com.example.lxiao.aahelper.baseactivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Toast;
+
+import com.example.lxiao.aahelper.R;
 
 import java.lang.reflect.Field;
 
@@ -37,5 +41,14 @@ public class ActivityBase extends Activity{
             e.printStackTrace();
         }
 
+    }
+    public AlertDialog showalertdialog(String ptitle,String mmessage,DialogInterface.OnClickListener mlistener)
+    {
+        return new AlertDialog.Builder(this)
+                .setTitle(ptitle)
+                .setMessage(mmessage)
+                .setNeutralButton(getString(R.string._sdeleteuser),mlistener)
+                .setNegativeButton(getString(R.string._scanceldeletebutton),null)
+                .show();
     }
 }

@@ -3,8 +3,12 @@ package com.example.lxiao.aahelper.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +29,7 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
     private ListView lvuserlist;
     private adapteruser madapter;
     private businessuser mbusiness;
-     private static int SHOW_TIME = 3000;
+    private User muser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +62,52 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
     @Override
     public void initlistener() {
         super.initlistener();
+        registerForContextMenu(lvuserlist);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        ListAdapter _listadapter = lvuserlist.getAdapter();
+        muser = (User) _listadapter.getItem(info.position);
+        CreateMenu(menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case 1:
+                ShowUserAddorEditDialog(muser);
+                break;
+            case 2:
+               deleteuser();
+                break;
+            default:break;
+        }
+       return true;
+    }
+    public void deleteuser()
+    {
+        String _msg = getString(R.string._sdeleteusertitle,new Object[]{muser.getMusername()});
+        showalertdialog(getString(R.string._sdeleteuser),_msg, new ondeleteuserlistener());
+    }
+    //处理删除事件
+    class ondeleteuserlistener implements DialogInterface.OnClickListener
+    {
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            boolean isdeleted = mbusiness.hideuserbyid(muser.getMuserid());
+            if(isdeleted)
+            {
+                binddata();
+                return;
+            }
+            else
+                Toast.makeText(ActivityUser.this,getString(R.string._deletefail),Toast.LENGTH_LONG).show();
+        }
+    }
     @Override
     public void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem) {
        // Toast.makeText(this, pslideMenuItem.getTitle(), Toast.LENGTH_LONG).show();
@@ -83,7 +131,7 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
 
         AlertDialog.Builder _builder = new AlertDialog.Builder(this);
         _builder.setTitle(Title)
-                .setIcon(R.drawable.user)
+
                 .setView(_view)
                 .setNeutralButton(getString(R.string._sbuttonsavetext), new OnAddorEdituserListener(puser, _edittext, true))
                 .setNegativeButton(getString(R.string._sbuttoncanceltext), new OnAddorEdituserListener(null, null, false))

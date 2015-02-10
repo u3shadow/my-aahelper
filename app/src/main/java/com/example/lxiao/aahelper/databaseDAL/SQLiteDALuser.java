@@ -89,6 +89,9 @@ public class SQLiteDALuser extends SQLiteDALbase {
     public void updateuser(String pcondition, User puser) {
         getdatabase().update(GetTableNameAndPk()[0], getcontentvalue(puser), pcondition, null);
     }
+    public boolean updateuser(String pcondition,ContentValues values) {
+        return getdatabase().update(GetTableNameAndPk()[0],values, pcondition, null) > 0;
+    }
 
     //get user list by conditon use SQLiteBase getlist(condition) method
     public List<User> getuser(String pcondition) {

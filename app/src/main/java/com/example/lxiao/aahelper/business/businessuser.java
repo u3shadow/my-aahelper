@@ -1,5 +1,6 @@
 package com.example.lxiao.aahelper.business;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
 
@@ -74,10 +75,19 @@ public class businessuser extends businessbase {
     {
         String condition = " And UserName = '"+pusername+"'";
         condition += " And UserId <> "+puserid;
+        condition += " And DeleteState = -1";
         List<User> _list = getusers(condition);
         if(_list.size() > 0)
             return true;
         else
             return false;
+    }
+    public boolean hideuserbyid(int pid)
+    {
+        String condition = " UserId = " + pid;
+        ContentValues _value = new ContentValues();
+        _value.put("DeleteState","0");
+        boolean isupdate = mdal.updateuser(condition,_value);
+        return isupdate;
     }
 }

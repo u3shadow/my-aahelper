@@ -23,6 +23,11 @@
     <string name="_suserisexist">用户名已存在</string>
     <string name="_sinsertsuccess">新增用户成功</string>
     <string name="_seditsuccess">修改用户成功</string>
+    <string name="_sdeleteuser">删除用户</string>
+    <string name="_sdeleteuserbutton">删除用户</string>
+    <string name="_scanceldeletebutton">取消</string>
+    <string name="_sdeleteusertitle">删除用户%s</string>
+    <string name="_deletefail">抱歉，删除失败</string>
     <string-array name="_amainlistmenu">
         <item>新表单项目</item>
         <item>用户管理</item>
