@@ -41,14 +41,15 @@ public class SQLiteDataBaseConfig {
         return version;
     }
 
-    public ArrayList gettable()//get DAL class name and path by XML resource
+    public ArrayList<String> gettable()//get DAL class name and path by XML resource
     {
-        ArrayList list = new ArrayList();
+        ArrayList<String> list = new ArrayList<String>();
         String[] mstring = mcontext.getResources().getStringArray(R.array._SQLiteDALclassName);
         String path = mcontext.getPackageName()+".databaseDAL.";
+
         for(int i = 0; i < mstring.length; i++)
         {
-            list.add(path+mstring[i]);
+            list.add(path+mstring[i].toString());
         }
         return list;
     }

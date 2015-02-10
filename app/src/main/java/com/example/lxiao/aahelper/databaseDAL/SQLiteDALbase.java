@@ -29,6 +29,7 @@ public abstract class SQLiteDALbase implements SQLiteHelper.SQLiteDataTable {
             //get database through sqlopenhelper
             mdatabase = SQLiteHelper.getInstance(mcontext).getWritableDatabase();
         }
+
         return mdatabase;
     }
     //begain transanction

@@ -67,6 +67,6 @@ public class businessuser extends businessbase {
 
     //use getuser method to get not deleted user list
     public List<User> getnothideuser() {
-        return mdal.getuser(" And DeleteState = 1");
+        return mdal.getuser(" And DeleteState = -1");
     }
 }

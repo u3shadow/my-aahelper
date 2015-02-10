@@ -45,15 +45,15 @@ public class SQLiteDALuser extends SQLiteDALbase {
     public void oncreate(SQLiteDatabase qdatabase) {
         StringBuilder s_CreateTableScript = new StringBuilder();
 
-        s_CreateTableScript.append("	Create  TABLE User(");
+        s_CreateTableScript.append("		Create  TABLE User(");
         s_CreateTableScript.append("				[UserID] integer PRIMARY KEY AUTOINCREMENT NOT NULL");
         s_CreateTableScript.append("				,[UserName] varchar(10) NOT NULL");
         s_CreateTableScript.append("				,[CreateDate] datetime NOT NULL");
         s_CreateTableScript.append("				,[DeleteState] integer NOT NULL");
         s_CreateTableScript.append("				)");
-
+        Log.v("sk","datatablecreate1");
         qdatabase.execSQL(s_CreateTableScript.toString());
-        Log.v("sk","datatablecreate");
+        Log.v("sk","datatablecreate2");
         initdefaultdata(qdatabase);
     }
 
@@ -98,9 +98,9 @@ public class SQLiteDALuser extends SQLiteDALbase {
     }
     //init some data by get XML source and for call back
     protected void initdefaultdata(SQLiteDatabase pdatabase) {
-        User muser = new User();
         String[] mstring = getcontext().getResources().getStringArray(R.array._ainituser);
         for (int i = 0; i < mstring.length; i++) {
+            User muser = new User();
             muser.setMusername(mstring[i]);
             ContentValues mcontentvalue = getcontentvalue(muser);
             pdatabase.insert(GetTableNameAndPk()[0], null, mcontentvalue);

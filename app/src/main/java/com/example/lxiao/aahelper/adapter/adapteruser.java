@@ -38,6 +38,7 @@ public class adapteruser extends AdapterBase{
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null)
         {
+            mhost = new host();
             convertView = getinflater().inflate(R.layout.useritemlayout, null);
             mhost.username = (TextView)convertView.findViewById(R.id.tv_username);
             mhost.userpic = (ImageView)convertView.findViewById(R.id.iv_userimage);
