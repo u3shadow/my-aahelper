@@ -194,12 +194,18 @@ public class ActivityBooks extends ActivityFrame implements SliderMenuView.OnSli
                    if(mcheckbox.isChecked()) {
                             mbook.setIsDefault(1);
                     }
+
                     //修改
                     String _string = medittext.getText().toString().trim();
                     mbook.setBookName(medittext.getText().toString());
                     if (mbook.getBookId() != 0) {
                         mbusiness.update(mbook);
                         SetDialogIsClose(dialog, true);
+                        if(!mcheckbox.isChecked()&&mbook.getIsDefault()==1)
+                        {
+                            Toast.makeText(ActivityBooks.this,getString(R.string._silligledefaultbook),Toast.LENGTH_LONG).show();
+                        }
+                        else
                         Toast.makeText(ActivityBooks.this,getString(R.string._seditbooksuccess),Toast.LENGTH_LONG).show();
                         binddata();
                         return;

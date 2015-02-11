@@ -30,6 +30,7 @@
     <string name="_deletefail">抱歉，删除失败</string>
 
     <string  name="_sischeckdefaultbook">是否设置为默认账本</string>
+    <string name="_silligledefaultbook">至少需要有一个默认账本</string>
     <string name="_sbookhint">请输入账本名</string>
     <string name="_sbooktype">%s账本</string>
     <string name="_seditbook">修改</string>
