@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ActivityUser"></activity>
-
+        <activity android:name=".activity.ActivityBooks"></activity>
     </application>
 
 </manifest>

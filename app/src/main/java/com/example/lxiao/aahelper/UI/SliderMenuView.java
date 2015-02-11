@@ -57,7 +57,7 @@ public class SliderMenuView {
                 {
                     Toggle();
                 }
-                return false;
+                return true;
             }
         });
 

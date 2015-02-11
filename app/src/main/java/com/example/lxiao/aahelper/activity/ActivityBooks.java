@@ -7,6 +7,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -15,25 +16,25 @@ import android.widget.Toast;
 import com.example.lxiao.aahelper.R;
 import com.example.lxiao.aahelper.UI.SliderMenuItem;
 import com.example.lxiao.aahelper.UI.SliderMenuView;
-import com.example.lxiao.aahelper.adapter.adapteruser;
+import com.example.lxiao.aahelper.adapter.adapterbook;
 import com.example.lxiao.aahelper.baseactivity.ActivityFrame;
-import com.example.lxiao.aahelper.business.businessuser;
-import com.example.lxiao.aahelper.model.User;
+import com.example.lxiao.aahelper.business.businessbook;
+import com.example.lxiao.aahelper.model.Book;
 import com.example.lxiao.aahelper.utility.RegexTools;
 
 /**
  * Created by U3 on 2015/2/9.
  */
-public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlideMenuListener {
+public class ActivityBooks extends ActivityFrame implements SliderMenuView.OnSlideMenuListener {
 
-    private ListView lvuserlist;
-    private adapteruser madapter;
-    private businessuser mbusiness;
-    private User muser;
+    private ListView lvbooklist;
+    private adapterbook madapter;
+    private businessbook mbusiness;
+    private Book mbook;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appendmainbody(R.layout.userlayout);
+        appendmainbody(R.layout.booklayout);
         initvar();
         initview();
         initlistener();
@@ -42,34 +43,34 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
     }
 
     public void binddata() {
-        madapter = new adapteruser(this);
-        lvuserlist.setAdapter(madapter);
+        madapter = new adapterbook(this);
+        lvbooklist.setAdapter(madapter);
     }
 
     @Override
     public void initvar() {
         super.initvar();
 
-        mbusiness = new businessuser(this);
+        mbusiness = new businessbook(this);
     }
 
     @Override
     public void initview() {
         super.initview();
-        lvuserlist = (ListView) findViewById(R.id.lv_userlistview);
+        lvbooklist = (ListView) findViewById(R.id.lv_booklistview);
     }
 
     @Override
     public void initlistener() {
         super.initlistener();
-        registerForContextMenu(lvuserlist);
+        registerForContextMenu(lvbooklist);
     }
     //长按弹出菜单
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-        ListAdapter _listadapter = lvuserlist.getAdapter();
-        muser = (User) _listadapter.getItem(info.position);
+        ListAdapter _listadapter = lvbooklist.getAdapter();
+        mbook = (Book) _listadapter.getItem(info.position);
         CreateMenu(menu);
     }
     //弹出菜单点击
@@ -78,35 +79,35 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
         switch (item.getItemId())
         {
             case 1:
-                ShowUserAddorEditDialog(muser);
+                ShowBookAddorEditDialog(mbook);
                 break;
             case 2:
-               deleteuser();
+               deletebook(); //need improve
                 break;
             default:break;
         }
        return true;
     }
     //删除提示框
-    public void deleteuser()
+    public void deletebook()
     {
-        String _msg = getString(R.string._sdeleteusertitle,new Object[]{muser.getMusername()});
-        showalertdialog(getString(R.string._sdeleteuser),_msg, new ondeleteuserlistener());
+        String _msg = getString(R.string._sdeletebooktitle,new Object[]{mbook.getBookName()});
+        showalertdialog(getString(R.string._sdeletebook),_msg, new ondeletebooklistener());
     }
     //处理删除事件
-    class ondeleteuserlistener implements DialogInterface.OnClickListener
+    class ondeletebooklistener implements DialogInterface.OnClickListener
     {
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            boolean isdeleted = mbusiness.hideuserbyid(muser.getMuserid());
+            boolean isdeleted = mbusiness.hidebookbyid(mbook.getBookId());
             if(isdeleted)
             {
                 binddata();
                 return;
             }
             else
-                Toast.makeText(ActivityUser.this,getString(R.string._deletefail),Toast.LENGTH_LONG).show();
+                Toast.makeText(ActivityBooks.this,getString(R.string._deletefail),Toast.LENGTH_LONG).show();
         }
     }
     //根据点击项来选择是否弹出对话框
@@ -115,42 +116,50 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
        // Toast.makeText(this, pslideMenuItem.getTitle(), Toast.LENGTH_LONG).show();
         if(pslideMenuItem.getId() == 0) {
             closeslidemenu();
-            ShowUserAddorEditDialog(null);
+            ShowBookAddorEditDialog(null);
         }
     }
     //显示修改或者新增用户的对话框
-    public void ShowUserAddorEditDialog(User puser) {
+    public void ShowBookAddorEditDialog(Book pbook) {
         String Title;
-        View _view = getlayoutinflater().inflate(R.layout.edit_or_add_user_layout, null);
-        EditText _edittext = (EditText) _view.findViewById(R.id.et_addoredituser);
-        if (puser != null) {
-            _edittext.setText(puser.getMusername());
-            Title = getString(R.string._susertype, new Object[]{getResources().getString(R.string._sedituser)});
+        View _view = getlayoutinflater().inflate(R.layout.edit_or_add_book_layout, null);
+        EditText _edittext = (EditText) _view.findViewById(R.id.et_addoreditbook);
+        CheckBox _checkbox = (CheckBox)_view.findViewById(R.id.cb_isdefaultbook);
+        if (pbook != null) {
+            _edittext.setText(pbook.getBookName());
+            if(pbook.getIsDefault() == 1)
+            _checkbox.setChecked(true);
+            else
+                _checkbox.setChecked(false);
+            Title = getString(R.string._sbooktype, new Object[]{getResources().getString(R.string._seditbook)});
         } else {
-            Title = getString(R.string._susertype, new Object[]{getResources().getString(R.string._sadduser)});
-            puser = new User();
+            Title = getString(R.string._sbooktype, new Object[]{getResources().getString(R.string._saddbook)});
+            pbook = new Book();
         }
 
         AlertDialog.Builder _builder = new AlertDialog.Builder(this);
         _builder.setTitle(Title)
 
                 .setView(_view)
-                .setNeutralButton(getString(R.string._sbuttonsavetext), new OnAddorEdituserListener(puser, _edittext, true))
-                .setNegativeButton(getString(R.string._sbuttoncanceltext), new OnAddorEdituserListener(null, null, false))
+                .setNeutralButton(getString(R.string._sbuttonsavetext), new OnAddorEditbookListener(pbook, _edittext, true,_checkbox))
+                .setNegativeButton(getString(R.string._sbuttoncanceltext), new OnAddorEditbookListener(null, null, false,null))
                 .show();
 
 
     }
     //修改和添加用户的点击事件
-    private class OnAddorEdituserListener implements DialogInterface.OnClickListener {
-        private User muser;
+    private class OnAddorEditbookListener implements DialogInterface.OnClickListener {
+        private Book mbook;
         private EditText medittext;
         private boolean missave;
+        private CheckBox mcheckbox;
 
-        public OnAddorEdituserListener(User puser, EditText pedittext, boolean pissave) {
-            muser = puser;
+        public OnAddorEditbookListener(Book pbook, EditText pedittext, boolean pissave,CheckBox pcheckbox) {
+            mbook = pbook;
             medittext = pedittext;
             missave = pissave;
+            mcheckbox = pcheckbox;
+
         }
 
         @Override
@@ -165,7 +174,7 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
                 SetDialogIsClose(dialog, false);
                 //为空
                 if (medittext.getText() == null) {
-                    Toast.makeText(ActivityUser.this, getString(R.string._snullusername), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActivityBooks.this, getString(R.string._snullbookname), Toast.LENGTH_LONG).show();
                     return;
                 } else
                    //非空
@@ -173,30 +182,33 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
                     boolean isllegle = RegexTools.IsChineseEnglishNum(medittext.getText().toString());
                     //判断合法性
                     if (!isllegle) {
-                     Toast.makeText(ActivityUser.this, getString(R.string._sillegleusername), Toast.LENGTH_LONG).show();
+                     Toast.makeText(ActivityBooks.this, getString(R.string._silleglebookname), Toast.LENGTH_LONG).show();
                         return;
                     }
                     //判重
-                    if(mbusiness.isuserexist(medittext.getText().toString(),muser.getMuserid()))
+                    if(mbusiness.isbookexist(medittext.getText().toString(),mbook.getBookId()))
                     {
-                        Toast.makeText(ActivityUser.this, getString(R.string._suserisexist), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityBooks.this, getString(R.string._sbookisexist), Toast.LENGTH_LONG).show();
                         return;
+                    }
+                   if(mcheckbox.isChecked()) {
+                            mbook.setIsDefault(1);
                     }
                     //修改
                     String _string = medittext.getText().toString().trim();
-                    muser.setMusername(medittext.getText().toString());
-                    if (muser.getMuserid() != 0) {
-                        mbusiness.update(muser);
+                    mbook.setBookName(medittext.getText().toString());
+                    if (mbook.getBookId() != 0) {
+                        mbusiness.update(mbook);
                         SetDialogIsClose(dialog, true);
-                        Toast.makeText(ActivityUser.this,getString(R.string._seditsuccess),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityBooks.this,getString(R.string._seditbooksuccess),Toast.LENGTH_LONG).show();
                         binddata();
                         return;
                     }
                     //新增
-                    else if (muser.getMuserid() == 0) {
-                        mbusiness.insert(muser);
+                    else if (mbook.getBookId() == 0) {
+                        mbusiness.insert(mbook);
                         SetDialogIsClose(dialog, true);
-                        Toast.makeText(ActivityUser.this,getString(R.string._sinsertsuccess),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityBooks.this,getString(R.string._sinsertbooksuccess),Toast.LENGTH_LONG).show();
                         binddata();
                         return;
                     }

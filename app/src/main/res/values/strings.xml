@@ -23,11 +23,26 @@
     <string name="_suserisexist">用户名已存在</string>
     <string name="_sinsertsuccess">新增用户成功</string>
     <string name="_seditsuccess">修改用户成功</string>
-    <string name="_sdeleteuser">删除用户</string>
+    <string name="_sdeleteuser">删除</string>
     <string name="_sdeleteuserbutton">删除用户</string>
     <string name="_scanceldeletebutton">取消</string>
     <string name="_sdeleteusertitle">删除用户%s</string>
     <string name="_deletefail">抱歉，删除失败</string>
+
+    <string  name="_sischeckdefaultbook">是否设置为默认账本</string>
+    <string name="_sbookhint">请输入账本名</string>
+    <string name="_sbooktype">%s账本</string>
+    <string name="_seditbook">修改</string>
+    <string name="_saddbook">新增</string>
+    <string name="_snullbookname">账本名不能为空</string>
+    <string name="_silleglebookname">账本名不合法，必须为字母数字或者汉字</string>
+    <string name="_sbookisexist">账本名已存在</string>
+    <string name="_sdeletebook">删除账本</string>
+    <string name="_sdeletebookbutton">删除账本</string>
+    <string name="_sdeletebooktitle">删除账本%s</string>
+    <string name="_seditbooksuccess">修改账本成功</string>
+    <string name="_sinsertbooksuccess">新增账本成功</string>
+
     <string-array name="_amainlistmenu">
         <item>新表单项目</item>
         <item>用户管理</item>
@@ -38,6 +53,10 @@
     </string-array>
     <string-array name="_SQLiteDALclassName">
         <item>SQLiteDALuser</item>
+        <item>SQLiteDALbook</item>
+    </string-array>
+    <string-array name="_abook">
+        <item>日常开销</item>
     </string-array>
 
 </resources>
