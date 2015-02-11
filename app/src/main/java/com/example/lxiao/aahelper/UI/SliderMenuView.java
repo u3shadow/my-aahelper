@@ -2,6 +2,7 @@ package com.example.lxiao.aahelper.UI;
 
 import android.app.Activity;
 import android.support.v7.internal.widget.AdapterViewCompat;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +28,7 @@ public class SliderMenuView {
 
     public SliderMenuView(Activity sAcitivity) {
         mActivity = sAcitivity;
-        mlistclicklistener = (OnSlideMenuListener)sAcitivity;//cast activity witch implement this interface
+        mlistclicklistener = (OnSlideMenuListener) sAcitivity;//cast activity witch implement this interface
         initver();
         initview();
         initlistener();
@@ -53,8 +54,8 @@ public class SliderMenuView {
         mrelativelayout.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_MENU&&event.getAction() == KeyEvent.ACTION_UP)
-                {
+                if (keyCode == KeyEvent.KEYCODE_MENU && event.getAction() == KeyEvent.ACTION_UP) {
+                    Log.v("sk","up!");
                     Toggle();
                 }
                 return false;
@@ -76,10 +77,11 @@ public class SliderMenuView {
     }
 
     private void bindlist() {
-        mlistview = (ListView)mActivity.findViewById((R.id.bottomlistview));
-        ListItemAdapter mlistadapter = new ListItemAdapter(mlist,mActivity);
+        mlistview = (ListView) mActivity.findViewById((R.id.bottomlistview));
+        ListItemAdapter mlistadapter = new ListItemAdapter(mlist, mActivity);
         mlistview.setAdapter(mlistadapter);
-        mlistview.setOnItemClickListener(new listitemclicklistener());}
+        mlistview.setOnItemClickListener(new listitemclicklistener());
+    }
 
     private void onslidemenuclick() {
 
@@ -93,7 +95,7 @@ public class SliderMenuView {
     }
 
     private void close() {
-        RelativeLayout.LayoutParams mlayoutparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,mActivity.getResources().getDimensionPixelSize(R.dimen.bottomlistheight));
+        RelativeLayout.LayoutParams mlayoutparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, mActivity.getResources().getDimensionPixelSize(R.dimen.bottomlistheight));
         mlayoutparams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         mrelativelayout.setLayoutParams(mlayoutparams);
         mswitch = !mswitch;
@@ -106,6 +108,7 @@ public class SliderMenuView {
             Toggle();
         }
     }
+
     class listitemclicklistener implements AdapterView.OnItemClickListener {
 
         @Override
@@ -114,7 +117,8 @@ public class SliderMenuView {
             mlistclicklistener.onSlideMenuItemClick(view, mitem);//call back listener
         }
     }
-    public interface  OnSlideMenuListener{
+
+    public interface OnSlideMenuListener {
         public abstract void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem);
     }//user to callback , activity implement it
 }
