@@ -58,7 +58,7 @@ public class SliderMenuView {
                     Log.v("sk","up!");
                     Toggle();
                 }
-                return false;
+                return true;
             }
         });
 
