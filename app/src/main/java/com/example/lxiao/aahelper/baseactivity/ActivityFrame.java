@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.lxiao.aahelper.R;
 import com.example.lxiao.aahelper.UI.SliderMenuItem;
@@ -24,7 +25,11 @@ public class ActivityFrame extends ActivityBase {
         setContentView(R.layout.over_all_layout);
 
     }
-
+    public void setTitle(String ptitle)
+    {
+        TextView _Title = (TextView)findViewById(R.id.tv_headname);
+        _Title.setText(ptitle);
+        }
     public void appendmainbody(int presId) {
         LinearLayout _smain_body = (LinearLayout) findViewById(R.id.maincenterlayout);
         View _view = LayoutInflater.from(this).inflate(presId, null);
@@ -42,7 +47,10 @@ public class ActivityFrame extends ActivityBase {
             iview.add(mitem);
         }
     }
-
+    public void slideMenuToggle()
+    {
+        iview.Toggle();
+    }
     public void CreateMenu(Menu pmenu) {
         int groupid = 0;
         int order = 0;

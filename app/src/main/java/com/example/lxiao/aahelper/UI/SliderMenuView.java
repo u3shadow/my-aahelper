@@ -51,16 +51,16 @@ public class SliderMenuView {
         mrelativelayout.setOnClickListener(new sliderclicklistener());
         mrelativelayout.setFocusableInTouchMode(true);//if not set key press event dont dispatch to view
         //open or close the menue when menue key pressed
-        mrelativelayout.setOnKeyListener(new View.OnKeyListener() {
+    /*    mrelativelayout.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_MENU && event.getAction() == KeyEvent.ACTION_UP) {
                     Log.v("sk","up!");
                     Toggle();
                 }
-                return true;
+                return false;
             }
-        });
+        });*/
 
 
     }

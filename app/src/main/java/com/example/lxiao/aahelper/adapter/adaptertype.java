@@ -29,7 +29,7 @@ public class adaptertype extends BaseExpandableListAdapter {
     }
     @Override
     public int getGroupCount() {
-        return 0;
+        return mList.size();
     }
     private Context mContext;
     private List mList;
@@ -49,13 +49,17 @@ public class adaptertype extends BaseExpandableListAdapter {
     public int getChildrenCount(int groupPosition) {
         Type _parenttype = (Type)getGroup(groupPosition);
         List _list = mBusiness.getnothidetypebyparentid(_parenttype.getTypeId());
-
         return _list.size();
     }
 
     @Override
+    public int getGroupTypeCount() {
+        return  mList.size();
+    }
+
+    @Override
     public Object getGroup(int groupPosition) {
-        return (Type)mList.get(groupPosition);
+        return mList.get(groupPosition);
     }
 
     @Override
@@ -68,7 +72,7 @@ public class adaptertype extends BaseExpandableListAdapter {
 
     @Override
     public long getGroupId(int groupPosition) {
-        return (long)groupPosition;
+        return groupPosition;
     }
 
     @Override

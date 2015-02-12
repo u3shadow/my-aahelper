@@ -1,11 +1,12 @@
 package com.example.lxiao.aahelper.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by lxiao on 2015/2/12.
  */
-public class Type {
+public class Type implements Serializable {
     private int TypeId;
     private String TypeName;
     private int DeleteState = -1;
@@ -69,5 +70,8 @@ public class Type {
         CreateDate = createDate;
     }
 
-
+    @Override
+    public String toString() {
+        return getTypeName();
+    }
 }

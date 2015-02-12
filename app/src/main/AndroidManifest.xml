@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".activity.ActivityUser"></activity>
         <activity android:name=".activity.ActivityBooks"></activity>
+        <activity android:name=".activity.ActivityType"></activity>
     </application>
 
 </manifest>

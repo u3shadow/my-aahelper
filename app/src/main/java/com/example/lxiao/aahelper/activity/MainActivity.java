@@ -70,6 +70,11 @@ public class MainActivity extends ActivityFrame implements SliderMenuView.OnSlid
                 openactivity(ActivityBooks.class);
                 return;
             }
+            if(_menuname.equals(getString(R.string._stype)))
+            {
+                openactivity(ActivityType.class);
+                return ;
+            }
         }
     }
 }

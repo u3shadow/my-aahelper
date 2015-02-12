@@ -119,6 +119,7 @@ public class SQLiteDALtype extends SQLiteDALbase{
         for (int i = 0; i < mstring.length; i++) {
 
             _type.setTypeName(mstring[i]);
+
             ContentValues mcontentvalue = getcontentvalue(_type);
             Long _id = pdatabase.insert(GetTableNameAndPk()[0],null,mcontentvalue);
             _type.setPath(_id.intValue()+".");

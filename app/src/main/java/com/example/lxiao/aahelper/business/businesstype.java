@@ -18,7 +18,7 @@ import java.util.List;
 public class businesstype extends businessbase {
     private SQLiteDALtype mdal;
     private Context mcontext;
-    private final String FlAG = " And Flay = '"+getstring(R.string._sflag)+"'";
+    private final String FlAG = " And Flag = '"+getstring(R.string._sflag)+"'";
     public businesstype(Context pcontext) {
         super(pcontext);
         mdal = new SQLiteDALtype(pcontext);

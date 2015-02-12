@@ -37,12 +37,18 @@ public class businessbook extends businessbase {
                     return true;
                 }
             }
+            else
+            {
+                mdal.settransectionsucces();
+                return true;
+            }
+
         } catch (Exception e) {
             return false;
         } finally {
             mdal.endtransection();
         }
-        return  true;
+
     }
 
     private boolean SetDefault(int pid) {
