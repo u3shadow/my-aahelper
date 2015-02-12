@@ -44,6 +44,8 @@
     <string name="_seditbooksuccess">修改账本成功</string>
     <string name="_sinsertbooksuccess">新增账本成功</string>
 
+    <string name="_sflag">消费</string>
+   <string name="_sChildTypeCount">%s子类别</string>
     <string-array name="_amainlistmenu">
         <item>新表单项目</item>
         <item>用户管理</item>
@@ -55,9 +57,13 @@
     <string-array name="_SQLiteDALclassName">
         <item>SQLiteDALuser</item>
         <item>SQLiteDALbook</item>
+        <item>SQLiteDALtype</item>
     </string-array>
     <string-array name="_abook">
         <item>日常开销</item>
     </string-array>
-
+    <string-array name="_atype">
+        <item>吃饭</item>
+        <item>网购</item>
+    </string-array>
 </resources>
