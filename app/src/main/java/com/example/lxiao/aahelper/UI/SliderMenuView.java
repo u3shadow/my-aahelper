@@ -34,7 +34,13 @@ public class SliderMenuView {
         initlistener();
         bindlist();
     }
+    public void RemoveBottomBox()
 
+    {
+        RelativeLayout _mainlayout  = (RelativeLayout)mActivity.findViewById(R.id.rl_over_all_layout);
+        _mainlayout.removeView(mrelativelayout);
+        mrelativelayout = null;
+    }
     public void initver() {
         mswitch = true;
         mlist = new ArrayList();

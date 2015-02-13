@@ -116,9 +116,9 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                /*Intent _intent = new Intent(ActivityType.this,ActivityTypeEditorAdd.class);
+                Intent _intent = new Intent(ActivityType.this,ActivityTypeEditorAdd.class);
                 _intent.putExtra("mtype",mtype);
-                this.startActivityForResult(_intent,1);*/
+                this.startActivityForResult(_intent,1);
                 break;
             case 2:
                 deletetype(mtype); //need improve
@@ -168,11 +168,12 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
     //根据点击项来选择是否弹出对话框
     @Override
     public void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem) {
+       slideMenuToggle();
         if(pslideMenuItem.getId() == 0)
         {
 
-          //  Intent _intent = new Intent(this,ActivityTypeEditorAdd.class);
-            //this.startActivityForResult(_intent,1);
+            Intent _intent = new Intent(this,ActivityTypeEditorAdd.class);
+            this.startActivityForResult(_intent,1);
         }
         if(pslideMenuItem.getId() == 1)
         {
