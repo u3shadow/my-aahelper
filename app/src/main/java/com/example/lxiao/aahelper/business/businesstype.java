@@ -22,14 +22,14 @@ public class businesstype extends businessbase {
     public businesstype(Context pcontext) {
         super(pcontext);
         mdal = new SQLiteDALtype(pcontext);
-        // mcontext = pcontext;
+         mcontext = pcontext;
     }
 
     //Insert type object by SQLiteDALtype inserttype(type) method
     public boolean updatebytypeid(Type ptype) {
         mdal.begaintransanction();
         try {
-            String _condition = " And TypeId = "+ptype.getTypeId();
+            String _condition = " TypeId = "+ptype.getTypeId();
             boolean _resulta = mdal.updatetype(_condition,ptype);
             boolean _resultb = true;
             String _path;

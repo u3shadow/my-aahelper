@@ -28,6 +28,7 @@ public class SliderMenuView {
 
     public SliderMenuView(Activity sAcitivity) {
         mActivity = sAcitivity;
+        if(mActivity instanceof OnSlideMenuListener)
         mlistclicklistener = (OnSlideMenuListener) sAcitivity;//cast activity witch implement this interface
         initver();
         initview();

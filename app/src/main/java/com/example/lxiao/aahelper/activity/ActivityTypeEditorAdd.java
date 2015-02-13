@@ -3,6 +3,7 @@ package com.example.lxiao.aahelper.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -78,9 +79,9 @@ public class ActivityTypeEditorAdd extends ActivityFrame implements View.OnClick
         if(ptype.getTypeId() != 0)
         {
             int _posistion = 0;
-            for(int i = 0;i < _arrayadapter.getCount();i++)
+            for(int i = 1;i < _arrayadapter.getCount();i++)//0 号位置为--请选择--字符串，不是TYPE类型 所以从1开始
             {
-                Type _type = (Type)_arrayadapter.getItem(i);
+                Type _type = (Type) _arrayadapter.getItem(i);
                 if(_type.getTypeId() == ptype.getParentId())
                 {
                     _posistion = _arrayadapter.getPosition(_type);

@@ -4,12 +4,14 @@
 <TextView
     style="@style/textstyle"
     android:id="@+id/tv_TypeName"
+    android:textSize="40dp"
     android:layout_alignParentLeft="true"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
     <TextView
         style="@style/textstyle"
         android:layout_alignParentRight="true"
+        android:textSize="30dp"
         android:id="@+id/tv_TypeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

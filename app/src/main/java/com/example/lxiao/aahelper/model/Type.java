@@ -72,6 +72,6 @@ public class Type implements Serializable {
 
     @Override
     public String toString() {
-        return getTypeName();
+        return TypeName;
     }
 }
