@@ -59,6 +59,7 @@ public class adaptertype extends BaseExpandableListAdapter {
 
     @Override
     public Object getGroup(int groupPosition) {
+        int i = groupPosition;
         return mList.get(groupPosition);
     }
 

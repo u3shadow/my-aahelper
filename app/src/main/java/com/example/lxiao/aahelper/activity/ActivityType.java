@@ -1,9 +1,11 @@
 package com.example.lxiao.aahelper.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lxiao.aahelper.R;
@@ -77,6 +80,14 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
     public void initlistener() {
 
         registerForContextMenu(eplistview);
+     /*   eplistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               // String name = ((TextView)view.findViewById(R.id.tv_TypeName)).getText().toString();
+                //Toast.makeText(ActivityType.this,name,Toast.LENGTH_LONG).show();
+                Log.v("sk","itemclick");
+            }
+        });*/
     }
 
     //长按弹出菜单 need prove
@@ -88,21 +99,20 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
         int _type = ExpandableListView.getPackedPositionType(_position);
         switch (_type) {
             case ExpandableListView.PACKED_POSITION_TYPE_GROUP:
-                mtype = (Type) madapter.getGroup((int)_position);
+                mtype = (Type) madapter.getGroup(_groupposition);
                 break;
             case ExpandableListView.PACKED_POSITION_TYPE_CHILD:
                 int _childposition = ExpandableListView.getPackedPositionChild(_position);
-                mtype = (Type) madapter.getChild((int) _position, _childposition);
+                mtype = (Type) madapter.getChild((int) _groupposition, _childposition);
                 break;
             default:
                 break;
 
         }
         //menu.setHeaderIcon();
-           if(mtype != null)
-           {
-               menu.setHeaderTitle(mtype.getTypeName());
-           }
+        if (mtype != null) {
+            menu.setHeaderTitle(mtype.getTypeName());
+        }
         CreateMenu(menu);
       /*  p_ContextMenu.add(0, 3, 3, R.string.ActivityCategoryTotal);
         if(mAdapterCategory.GetChildCountOfGroup(_GroupPosition) != 0 && mSelectModelCategory.GetParentID() == 0)
@@ -116,9 +126,9 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                Intent _intent = new Intent(ActivityType.this,ActivityTypeEditorAdd.class);
-                _intent.putExtra("mtype",mtype);
-                this.startActivityForResult(_intent,1);
+                Intent _intent = new Intent(ActivityType.this, ActivityTypeEditorAdd.class);
+                _intent.putExtra("mtype", mtype);
+                this.startActivityForResult(_intent, 1);
                 break;
             case 2:
                 deletetype(mtype); //need improve
@@ -144,10 +154,11 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
     //处理删除事件
     class ondeletetypelistener implements DialogInterface.OnClickListener {
         private Type mtype;
-        public ondeletetypelistener(Type ptype)
-        {
+
+        public ondeletetypelistener(Type ptype) {
             mtype = ptype;
         }
+
         @Override
         public void onClick(DialogInterface dialog, int which) {
             boolean isdeleted = mbusiness.hidetypebypath(mtype.getPath());
@@ -168,15 +179,13 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
     //根据点击项来选择是否弹出对话框
     @Override
     public void onSlideMenuItemClick(View pview, SliderMenuItem pslideMenuItem) {
-       slideMenuToggle();
-        if(pslideMenuItem.getId() == 0)
-        {
+        slideMenuToggle();
+        if (pslideMenuItem.getId() == 0) {
 
-            Intent _intent = new Intent(this,ActivityTypeEditorAdd.class);
-            this.startActivityForResult(_intent,1);
+            Intent _intent = new Intent(this, ActivityTypeEditorAdd.class);
+            this.startActivityForResult(_intent, 1);
         }
-        if(pslideMenuItem.getId() == 1)
-        {
+        if (pslideMenuItem.getId() == 1) {
             //some char thing here;
         }
     }
