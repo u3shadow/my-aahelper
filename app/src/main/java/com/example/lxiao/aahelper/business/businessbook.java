@@ -2,7 +2,9 @@ package com.example.lxiao.aahelper.business;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.widget.ArrayAdapter;
 
+import com.example.lxiao.aahelper.R;
 import com.example.lxiao.aahelper.databaseDAL.SQLiteDALbook;
 import com.example.lxiao.aahelper.model.Book;
 
@@ -22,7 +24,16 @@ public class businessbook extends businessbase {
         mdal = new SQLiteDALbook(pcontext);
         // mcontext = pcontext;
     }
-
+    public Book getdefault()
+    {
+        List<Book> _list = mdal.getbook(" And IsDefault = 1");
+        if(_list.size() == 1)
+        {
+            return _list.get(0);
+        }
+        else
+            return null;
+    }
     //Insert book object by SQLiteDALbook insertbook(book) method
     public boolean insert(Book pbook) {
         mdal.begaintransanction();
@@ -137,4 +148,16 @@ public class businessbook extends businessbase {
         boolean isupdate = mdal.updatebook(condition, _value);
         return isupdate;
     }
+    public ArrayAdapter getallbookarrayadapter()
+    {
+       /* List _list = getnothidebook();
+        String _name[] = new String[_list.size()];
+        for(int i = 0;i < _list.size();i++)
+        {
+            _name[i] = ((Book)_list.get(i)).getBookName();
+        }
+        ArrayAdapter _arrayadapter = new ArrayAdapter(getcontext(), R.layout.common_auto_complete,_list);
+       // return _arrayadapter;*/
+        return null;
+        }
 }

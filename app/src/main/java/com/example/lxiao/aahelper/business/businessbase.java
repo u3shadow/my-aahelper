@@ -19,4 +19,8 @@ public class businessbase {
     {
         return mcontext.getString(pid,pobject);
     }
+    public Context getcontext()
+    {
+        return mcontext;
+    }
 }

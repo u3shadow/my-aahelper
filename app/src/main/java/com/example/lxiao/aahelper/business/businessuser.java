@@ -90,4 +90,14 @@ public class businessuser extends businessbase {
         boolean isupdate = mdal.updateuser(condition,_value);
         return isupdate;
     }
+    public String getusernamebyuserid(String puserid)
+    {
+        List<User> _list = getuserlistbyid(puserid.split(","));
+        String _name = "";
+        for(int i = 0; i < _list.size();i++)
+        {
+            _name += _list.get(i).getMusername()+",";
+        }
+        return _name;
+    }
 }

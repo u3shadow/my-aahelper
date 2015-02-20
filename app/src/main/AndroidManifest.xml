@@ -21,6 +21,7 @@
         <activity android:name=".activity.ActivityBooks"></activity>
         <activity android:name=".activity.ActivityType"></activity>
         <activity android:name=".activity.ActivityTypeEditorAdd"></activity>
+        <activity android:name=".activity.ActivityPayOutEditorAdd"></activity>
     </application>
 
 </manifest>

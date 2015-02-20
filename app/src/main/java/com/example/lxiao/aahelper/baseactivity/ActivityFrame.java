@@ -67,7 +67,11 @@ public class ActivityFrame extends ActivityBase {
             }
         }
     }
-
+    protected void removebottombox()
+    {
+        iview = new SliderMenuView(this);
+        iview.RemoveBottomBox();
+    }
     public void closeslidemenu() {
         iview.Toggle();
     }

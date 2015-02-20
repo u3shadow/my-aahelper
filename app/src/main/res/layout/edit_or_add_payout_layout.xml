@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+<TableLayout
+    android:id="@+id/tl_payoutbutton"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:stretchColumns="0,1"
+    android:layout_height="wrap_content">
+    <TableRow>
+    <Button
+        android:id="@+id/bt_savepayout"
+        android:layout_width="match_parent"
+        android:text="@string/_spayoutsave"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/bt_cancelpayout"
+        android:layout_width="match_parent"
+        android:text="@string/_scancelpayout"
+        android:layout_height="wrap_content" />
+    </TableRow>
+    </TableLayout>
+    <ScrollView android:id="@+id/sv_payoutscroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/tl_payoutbutton"
+        >
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            >
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView android:id="@+id/iv_selectbook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/bookicon"/>
+                <Button android:id="@+id/bt_selectbook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_sselectbook"
+                    android:layout_alignParentRight="true"
+                    />
+                <EditText android:id="@+id/et_selectbook"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/bt_selectbook"
+                    android:layout_toRightOf="@id/iv_selectbook"
+                    android:focusable="false"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView android:id="@+id/iv_amount"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/statistic"/>
+                <Button android:id="@+id/bt_setamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_ssetamount"
+                    android:layout_alignParentRight="true"
+                    />
+                <EditText android:id="@+id/et_amount"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/bt_setamount"
+                    android:layout_toRightOf="@id/iv_amount"
+                    android:numeric="decimal"
+                    android:hint="@string/_shintamount"
+                    android:maxLength="5"
+                    />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <ImageView android:id="@+id/iv_selecttype"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/type"/>
+                <Button android:id="@+id/bt_selecttype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_sselecttype"
+                    android:layout_alignParentRight="true"
+                    />
+                <AutoCompleteTextView android:id="@+id/at_selecttype"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/bt_selecttype"
+                    android:layout_toRightOf="@id/iv_selecttype"
+                    android:hint="@string/_shinttype"
+                    android:singleLine="true"
+                    android:textColor="#ff000000"
+                    android:completionThreshold="1"
+                    android:dropDownWidth="fill_parent"
+                    android:focusable="false"
+                    />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button android:id="@+id/bt_selectpaydata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_spaydata"
+                    android:layout_alignParentRight="true"
+                    />
+                <EditText android:id="@+id/et_selectpaydata"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/bt_selectpaydata"
+                    android:focusable="false"
+                    />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button android:id="@+id/bt_selectpaytype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                        android:text="@string/_spayouttype"
+                    android:layout_alignParentRight="true"
+                    />
+                <EditText android:id="@+id/et_selectpaytype"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/bt_selectpaytype"
+                    android:focusable="false"
+                    />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button android:id="@+id/bt_selectuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_spayuser"
+                    android:layout_alignParentRight="true"
+                    />
+                <EditText android:id="@+id/et_payuser"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/bt_selectuser"
+                    android:hint="@string/_shintpayuser"
+                    android:singleLine="true"
+                    android:focusable="false"
+                    />
+            </RelativeLayout>
+            <LinearLayout android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                >
+                <EditText android:id="@+id/et_comment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:lines="7"
+                    android:hint="@string/_shintcomment"
+                    android:gravity="fill_horizontal"
+                    android:maxLength="301"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
