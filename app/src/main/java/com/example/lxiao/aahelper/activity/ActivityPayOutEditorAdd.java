@@ -49,7 +49,7 @@ import java.util.List;
 /**
  * Created by U3 on 2015/2/19.
  */
-public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnClickListener,numberdialog.OnNumberDialogListener {
+public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnClickListener, numberdialog.OnNumberDialogListener {
 
     private PayOut mpayout;
     private Button mbtsave;
@@ -98,7 +98,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
                 break;
             case R.id.bt_selectpaydata:
                 Calendar _calendar = Calendar.getInstance();
-                showdataselect(_calendar.get(Calendar.YEAR),_calendar.get(Calendar.MONTH),_calendar.get(Calendar.DATE));
+                showdataselect(_calendar.get(Calendar.YEAR), _calendar.get(Calendar.MONTH), _calendar.get(Calendar.DATE));
                 break;
             case R.id.bt_selectuser:
                 ShowUserSelectDialog(metpaytype.getText().toString());
@@ -123,7 +123,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         removebottombox();
         initview();
         initvar();
-      binddata();
+        binddata();
         SetTitle();
         initlistener();
     }
@@ -156,7 +156,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         mettypename = (EditText) findViewById(R.id.et_selectpaytype);
         metpayuser = (EditText) findViewById(R.id.et_payuser);
         metcomment = (EditText) findViewById(R.id.et_comment);
-        actvtypename = (AutoCompleteTextView)findViewById(R.id.at_selecttype);
+        actvtypename = (AutoCompleteTextView) findViewById(R.id.at_selecttype);
         actvtypename.setEditableFactory(new Editable.Factory());
     }
 
@@ -185,7 +185,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
 
     private void binddata() {
         mbookid = mbook.getBookId();
-         metbookname.setText(mbook.getBookName());
+        metbookname.setText(mbook.getBookName());
         actvtypename.setAdapter(mbusinessbook.getallbookarrayadapter()); //need fix
         metpaydate.setText(DateTools.getFormatDateTime(new Date(), "yyyy-MM-dd"));
         mpayouttypearray = getResources().getStringArray(R.array.payouttype);
@@ -308,6 +308,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         _listview.setAdapter(_adapterbookselect);
 
         _builder.setTitle(getString(R.string._sselectbook))
+
                 .setNegativeButton(R.string._sback, null)
                 .setView(_view);
         AlertDialog _alertdialog = _builder.create();
@@ -339,7 +340,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         adaptertype _typeadapter = new adaptertype(this);
         _expandablelistview.setAdapter(_typeadapter);
 
-        _builder.setIcon(R.drawable.type)
+        _builder
                 .setTitle(getString(R.string._sselecttype))
                 .setNegativeButton(getString(R.string._sback), null)
                 .setView(_view);
@@ -370,93 +371,96 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
             return false;
         }
     }
-        private class ontypechildclicklistener implements ExpandableListView.OnChildClickListener {
-            private AlertDialog malertdialog;
-            private adaptertype mtypeadapter;
 
-            public ontypechildclicklistener(AlertDialog palert, adaptertype padapter) {
-                malertdialog = palert;
-                mtypeadapter = padapter;
-            }
+    private class ontypechildclicklistener implements ExpandableListView.OnChildClickListener {
+        private AlertDialog malertdialog;
+        private adaptertype mtypeadapter;
 
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Type _type = (Type) mtypeadapter.getChild(groupPosition, childPosition);
-                actvtypename.setText(_type.getTypeName());
-                mtypeid = _type.getTypeId();
-                malertdialog.dismiss();
-                return false;
-            }
+        public ontypechildclicklistener(AlertDialog palert, adaptertype padapter) {
+            malertdialog = palert;
+            mtypeadapter = padapter;
         }
 
-        private void showdataselect(int pyear, int pmonth, int pday) {
-            (new DatePickerDialog(ActivityPayOutEditorAdd.this, new OnDateSelectListener(), pyear, pmonth, pday)).show();
+        @Override
+        public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+            Type _type = (Type) mtypeadapter.getChild(groupPosition, childPosition);
+            actvtypename.setText(_type.getTypeName());
+            mtypeid = _type.getTypeId();
+            malertdialog.dismiss();
+            return false;
+        }
+    }
+
+    private void showdataselect(int pyear, int pmonth, int pday) {
+        (new DatePickerDialog(ActivityPayOutEditorAdd.this, new OnDateSelectListener(), pyear, pmonth, pday)).show();
+    }
+
+    private class OnDateSelectListener implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Date _date = new Date(year - 1900, monthOfYear, dayOfMonth);
+            metpaydate.setText(DateTools.getFormatDateTime(_date, "yyyy-MM-dd"));
+        }
+    }
+
+    private void showpayouttypeselect()//need fix
+    {
+        AlertDialog.Builder _builder = new AlertDialog.Builder(this);
+        View _view = LayoutInflater.from(this).inflate(R.layout.paytypelayout, null);
+        ListView _listview = (ListView) _view.findViewById(R.id.ListViewPayoutType);
+
+        _builder.setTitle(R.string._sselectpaytype);
+        _builder.setNegativeButton(R.string._sback, null);
+        _builder.setView(_view);
+        AlertDialog _AlertDialog = _builder.create();
+        _AlertDialog.show();
+        _listview.setOnItemClickListener(new OnPayoutTypeItemClickListener(_AlertDialog));
+    }
+
+    private class OnPayoutTypeItemClickListener implements AdapterView.OnItemClickListener {
+        private AlertDialog mAlertDialog;
+
+        public OnPayoutTypeItemClickListener(AlertDialog pAlertDialog) {
+            mAlertDialog = pAlertDialog;
         }
 
-        private class OnDateSelectListener implements DatePickerDialog.OnDateSetListener {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Date _date = new Date(year - 1900, monthOfYear, dayOfMonth);
-                metpaydate.setText(DateTools.getFormatDateTime(_date, "yyyy-MM-dd"));
-            }
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            String _payouttype = (String) parent.getAdapter().getItem(position);
+            metpaytype.setText(_payouttype);
+            metpayuser.setText("");
+            mpayuserid = "";
+            mAlertDialog.dismiss();
         }
-        private void showpayouttypeselect()//need fix
-        {
-            AlertDialog.Builder _builder = new AlertDialog.Builder(this);
-            View _view = LayoutInflater.from(this).inflate(R.layout.paytypelayout,null);
-            ListView _listview = (ListView)_view.findViewById(R.id.ListViewPayoutType);
+    }
 
-            _builder.setTitle(R.string._sselectpaytype);
-            _builder.setNegativeButton(R.string._sback, null);
-            _builder.setView(_view);
-            AlertDialog _AlertDialog = _builder.create();
-            _AlertDialog.show();
-            _listview.setOnItemClickListener(new OnPayoutTypeItemClickListener(_AlertDialog));
-        }
-        private class OnPayoutTypeItemClickListener implements AdapterView.OnItemClickListener{
-            private AlertDialog mAlertDialog;
-            public OnPayoutTypeItemClickListener(AlertDialog pAlertDialog)
-            {
-                mAlertDialog = pAlertDialog;
-            }
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String _payouttype = (String)parent.getAdapter().getItem(position);
-                metpaytype.setText(_payouttype);
-                metpayuser.setText("");
-                mpayuserid = "";
-                mAlertDialog.dismiss();
-            }
-        }
     private void ShowUserSelectDialog(String p_PayoutType)//need fix
     {
         AlertDialog.Builder _Builder = new AlertDialog.Builder(this);
         View _View = LayoutInflater.from(this).inflate(R.layout.userlayout, null);
-        LinearLayout _LinearLayout = (LinearLayout)_View.findViewById(R.id.usermainlinearlayout);
+        LinearLayout _LinearLayout = (LinearLayout) _View.findViewById(R.id.usermainlinearlayout);
         _LinearLayout.setBackgroundResource(R.drawable.mainbackground);
-        ListView _ListView = (ListView)_View.findViewById(R.id.lv_userlistview);
+        ListView _ListView = (ListView) _View.findViewById(R.id.lv_userlistview);
         adapteruser _AdapterUser = new adapteruser(this);
         _ListView.setAdapter(_AdapterUser);
 
-        _Builder.setIcon(R.drawable.user);
+
         _Builder.setTitle(R.string._sselectuser);
         _Builder.setNegativeButton(R.string._sback, new OnSelectUserBack());
         _Builder.setView(_View);
         AlertDialog _AlertDialog = _Builder.create();
         _AlertDialog.show();
-        _ListView.setOnItemClickListener(new OnUserItemClickListener(_AlertDialog,p_PayoutType));
+        _ListView.setOnItemClickListener(new OnUserItemClickListener(_AlertDialog, p_PayoutType));
     }
-    private class OnSelectUserBack implements DialogInterface.OnClickListener
-    {
+
+    private class OnSelectUserBack implements DialogInterface.OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             metpayuser.setText("");
             String _Name = "";
             mpayuserid = "";
-            if(mUserSelectedList != null)
-            {
-                for(int i=0;i<mUserSelectedList.size();i++)
-                {
+            if (mUserSelectedList != null) {
+                for (int i = 0; i < mUserSelectedList.size(); i++) {
                     _Name += mUserSelectedList.get(i).getMusername() + ",";
                     mpayuserid += mUserSelectedList.get(i).getMuserid() + ",";
                 }
@@ -468,16 +472,15 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         }
     }
 
-    private class OnUserItemClickListener implements AdapterView.OnItemClickListener
-    {
+    private class OnUserItemClickListener implements AdapterView.OnItemClickListener {
         private AlertDialog m_AlertDialog;
         private String m_PayoutType;
 
-        public OnUserItemClickListener(AlertDialog p_AlertDialog,String p_PayoutType)
-        {
+        public OnUserItemClickListener(AlertDialog p_AlertDialog, String p_PayoutType) {
             m_AlertDialog = p_AlertDialog;
             m_PayoutType = p_PayoutType;
         }
+
         @Override
         public void onItemClick(AdapterView p_AdapterView, View arg1, int p_Position,
                                 long arg3) {
@@ -486,25 +489,21 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
 //			m_AlertDialog.dismiss();
 
             String _PayoutTypeArr[] = getResources().getStringArray(R.array.payouttype);
-            User _ModelUser = (User)((Adapter)p_AdapterView.getAdapter()).getItem(p_Position);
-            if(m_PayoutType.equals(_PayoutTypeArr[0]) || m_PayoutType.equals(_PayoutTypeArr[1]))
-            {
-                RelativeLayout _Main = (RelativeLayout)arg1.findViewById(R.id.userrelativelayout);
+            User _ModelUser = (User) ((Adapter) p_AdapterView.getAdapter()).getItem(p_Position);
+            if (m_PayoutType.equals(_PayoutTypeArr[0]) || m_PayoutType.equals(_PayoutTypeArr[1])) {
+                RelativeLayout _Main = (RelativeLayout) arg1.findViewById(R.id.userrelativelayout);
 
 
-                if(mItemColor == null && mUserSelectedList == null)
-                {
+                if (mItemColor == null && mUserSelectedList == null) {
                     mItemColor = new ArrayList<RelativeLayout>();
                     mUserSelectedList = new ArrayList<User>();
                 }
 
-                if(mItemColor.contains(_Main))
-                {
+                if (mItemColor.contains(_Main)) {
                     _Main.setBackgroundResource(R.drawable.blue);
                     mItemColor.remove(_Main);
                     mUserSelectedList.remove(_ModelUser);
-                }
-                else {
+                } else {
                     _Main.setBackgroundResource(R.drawable.red);
                     mItemColor.add(_Main);
                     mUserSelectedList.add(_ModelUser);
@@ -521,15 +520,13 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
                 return;
             }
 
-            if(m_PayoutType.equals(_PayoutTypeArr[2]))
-            {
+            if (m_PayoutType.equals(_PayoutTypeArr[2])) {
                 mUserSelectedList = new ArrayList<User>();
                 mUserSelectedList.add(_ModelUser);
                 metpayuser.setText("");
                 String _Name = "";
                 mpayuserid = "";
-                for(int i=0;i<mUserSelectedList.size();i++)
-                {
+                for (int i = 0; i < mUserSelectedList.size(); i++) {
                     _Name += mUserSelectedList.get(i).getMusername() + ",";
                     mpayuserid += mUserSelectedList.get(i).getMuserid() + ",";
                 }

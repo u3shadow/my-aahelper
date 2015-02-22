@@ -9,6 +9,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.lxiao.aahelper.activity.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,11 +18,11 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActivityUser"></activity>
-        <activity android:name=".activity.ActivityBooks"></activity>
-        <activity android:name=".activity.ActivityType"></activity>
-        <activity android:name=".activity.ActivityTypeEditorAdd"></activity>
-        <activity android:name=".activity.ActivityPayOutEditorAdd"></activity>
+        <activity android:name=".activity.ActivityUser" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activity.ActivityBooks" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activity.ActivityType" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activity.ActivityTypeEditorAdd" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activity.ActivityPayOutEditorAdd" android:screenOrientation="portrait" ></activity>
     </application>
 
 </manifest>
