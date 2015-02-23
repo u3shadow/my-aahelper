@@ -38,7 +38,7 @@ public class SQLiteDALpayout extends SQLiteDALbase {
         mpayout.setPayMean(pcursor.getString(pcursor.getColumnIndex("PayMean")));
         mpayout.setPayUserId((pcursor.getString(pcursor.getColumnIndex("PayUserId"))));
         mpayout.setPayComment((pcursor.getString(pcursor.getColumnIndex("PayComment"))));
-        Date _CreateDate = DateTools.getDate(pcursor.getString(pcursor.getColumnIndex("CreateDate")), "yyyy-MM-dd HH:mm:ss");
+        Date _CreateDate = DateTools.getDate(pcursor.getString(pcursor.getColumnIndex("CreateDate")), "yyyy-MM-dd");
         mpayout.setCreateDate(_CreateDate);
         mpayout.setDeleteState((pcursor.getInt(pcursor.getColumnIndex("DeleteState"))));
 
@@ -82,7 +82,7 @@ public class SQLiteDALpayout extends SQLiteDALbase {
     public ContentValues getcontentvalue(PayOut ppayout) {
         ContentValues mcontentvalue = new ContentValues();
         mcontentvalue.put("DeleteState", ppayout.getDeleteState());
-        mcontentvalue.put("CreateDate", DateTools.getFormatDateTime(ppayout.getCreateDate(), "yyyy-MM-dd HH:mm:ss"));
+        mcontentvalue.put("CreateDate", DateTools.getFormatDateTime(ppayout.getCreateDate(), "yyyy-MM-dd"));
         mcontentvalue.put("pBookId", ppayout.getpBookId());
         mcontentvalue.put("pTypeId", ppayout.getpTypeId());
         mcontentvalue.put("Amount", ppayout.getAmount().toString());
@@ -90,7 +90,7 @@ public class SQLiteDALpayout extends SQLiteDALbase {
         mcontentvalue.put("PayMean", ppayout.getPayMean());
         mcontentvalue.put("PayComment", ppayout.getPayComment());
         mcontentvalue.put("PayUserId", ppayout.getPayUserId());
-        mcontentvalue.put("PayDate", DateTools.getFormatDateTime(ppayout.getPayDate(), "yyyy-MM-dd HH:mm:ss"));
+        mcontentvalue.put("PayDate", DateTools.getFormatDateTime(ppayout.getPayDate(), "yyyy-MM-dd"));
         return mcontentvalue;
     }//1
 

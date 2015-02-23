@@ -54,9 +54,13 @@ public class    businesspayout extends businessbase {
         return mdal.getpayout(condition);
     }
     public String[] getpayouttotal(String pcondition){
+        //ifnull(Sum(Amount),0) As SumAmount,Count(Amount) As Count
+        String test = " And PayDate = 2015-02-23";
         String sql = "Select ifnull(Sum(Amount),0) As SumAmount,Count(Amount) As Count From PayOut Where 1=1 "+pcondition;
         String _Total[] = new String[2];
         Cursor _cursor = mdal.Execsql(sql);
+       // if(_cursor.getCount() > 0)
+       // _Total[0] = _cursor.getString(_cursor.getColumnIndex("Amount"));
         if(_cursor.getCount() == 1)
         {
             while(_cursor.moveToNext())

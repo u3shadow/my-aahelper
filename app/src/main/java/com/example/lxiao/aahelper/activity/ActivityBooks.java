@@ -39,7 +39,7 @@ public class ActivityBooks extends ActivityFrame implements SliderMenuView.OnSli
         initview();
         initlistener();
         binddata();
-        createslidemenu(R.array._amainlistmenu);
+        createslidemenu(R.array._abookmenu);
     }
 
     public void binddata() {
@@ -58,6 +58,7 @@ public class ActivityBooks extends ActivityFrame implements SliderMenuView.OnSli
     public void initview() {
         super.initview();
         lvbooklist = (ListView) findViewById(R.id.lv_booklistview);
+        setTitle(getString(R.string._sbook));
     }
 
     @Override

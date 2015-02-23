@@ -51,7 +51,7 @@ public class adapterpayout extends AdapterBase {
             convertView = getinflater().inflate(R.layout.payoutitemlayout,null);
             _holder.image = (ImageView)convertView.findViewById(R.id.iv_payoutimage);
             _holder.name = (TextView)convertView.findViewById(R.id.tv_payoutname);
-            _holder.total =(TextView)convertView.findViewById(R.id.tv_payouttotal);
+            _holder.total =(TextView)convertView.findViewById(R.id.tv_total);
             _holder.relativelayoutdate = (RelativeLayout)convertView.findViewById(R.id.rl_payouttitle);
             _holder.payoutuserandtype = (TextView)convertView.findViewById(R.id.tv_payuserandpaytype);
             convertView.setTag(_holder);
@@ -76,7 +76,6 @@ public class adapterpayout extends AdapterBase {
             String _message = mbusinesspayout.getpayouttotalmessage(_payoutdate,mbookid);
             ((TextView)_holder.relativelayoutdate.findViewById(R.id.tv_payoutdate)).setText(_payoutdate);
             ((TextView)_holder.relativelayoutdate.findViewById(R.id.tv_payouttotal)).setText(_message);
-
         }
         _holder.image.setImageResource(R.drawable.bookicon);
         _holder.name.setText(_payout.getpTypeName());

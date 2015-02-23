@@ -88,7 +88,7 @@
     <string name="_sback">返回</string>
     <string name="_sselectpaytype">请选择消费类型</string>
     <string name="_sselectuser">请选择消费人</string>
-    <string name="_spayouttitle">账本：%1$s共有%2$s笔消费</string>
+    <string name="_spayouttitle">账本：《%1$s》--共有%2$s笔消费</string>
     <string name="_spayoutdelete">删除消费</string>
     <string name="_sdeletepayout">删除</string>
 
@@ -112,8 +112,13 @@
         <item>个人</item>
     </string-array>
     <string-array name="_amainlistmenu">
-        <item>新表单项目</item>
-        <item>用户管理</item>
+        <item>关于我们</item>
+    </string-array>
+    <string-array name="_abookmenu">
+        <item>新建账本</item>
+    </string-array>
+    <string-array name="_ausermenu">
+        <item>新建用户</item>
     </string-array>
     <string-array name="_atypelistmenu">
         <item>新建类别</item>

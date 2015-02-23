@@ -36,6 +36,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+
         android:layout_below="@id/rl_payouttitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -46,6 +47,7 @@
             android:layout_height="50dp" />
 
         <TextView
+            style="@style/textstyle"
             android:id="@+id/tv_payoutname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,12 +56,14 @@
             android:singleLine="true"
             />
         <TextView
+            style="@style/textstyle"
             android:id="@+id/tv_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             />
         <TextView
+            style="@style/textstyle"
             android:id="@+id/tv_payuserandpaytype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

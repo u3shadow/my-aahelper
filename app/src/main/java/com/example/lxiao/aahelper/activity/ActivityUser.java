@@ -38,7 +38,7 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
         initview();
         initlistener();
         binddata();
-        createslidemenu(R.array._amainlistmenu);
+        createslidemenu(R.array._ausermenu);
     }
 
     public void binddata() {
@@ -57,6 +57,7 @@ public class ActivityUser extends ActivityFrame implements SliderMenuView.OnSlid
     public void initview() {
         super.initview();
         lvuserlist = (ListView) findViewById(R.id.lv_userlistview);
+        setTitle(getString(R.string._suser));
     }
 
     @Override
