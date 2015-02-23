@@ -23,6 +23,7 @@
         <activity android:name=".activity.ActivityType" android:screenOrientation="portrait" ></activity>
         <activity android:name=".activity.ActivityTypeEditorAdd" android:screenOrientation="portrait" ></activity>
         <activity android:name=".activity.ActivityPayOutEditorAdd" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activity.ActivityPayOut" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -135,6 +135,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
             _title = getString(R.string._saddpayout);
         } else {
             _title = getString(R.string._seditpayout);
+            initdata(mpayout);
         }
         setTitle(_title);
     }
@@ -196,10 +197,10 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         metbookname.setText(ppayout.getpBookName());
         mbookid = ppayout.getpBookId();
         metamount.setText(ppayout.getAmount().toString());
-        actvtypename.setText(ppayout.getpBookName());
+        actvtypename.setText(ppayout.getpTypeName());
         mtypeid = ppayout.getpBookId();
         metpaydate.setText(DateTools.getFormatDateTime(ppayout.getPayDate(), "yyyy-MM-dd"));
-        metpaytype.setText(ppayout.getPayWay());
+        metpaytype.setText(ppayout.getPayMean());
 
         businessuser _businessuser = new businessuser(this);
         String _username = _businessuser.getusernamebyuserid(ppayout.getPayUserId());
@@ -267,7 +268,7 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         mpayout.setpTypeId(mtypeid);
         mpayout.setAmount(new BigDecimal(metamount.getText().toString().trim()));
         mpayout.setPayDate(DateTools.getDate(metpaydate.getText().toString().trim(), "yyyy-MM-dd"));
-        //mpayout.set(metpaytype.getText().toString().trim());
+        mpayout.setPayMean(metpaytype.getText().toString().trim());
         mpayout.setPayUserId(mpayuserid);
         mpayout.setPayComment(metcomment.getText().toString().trim());
 

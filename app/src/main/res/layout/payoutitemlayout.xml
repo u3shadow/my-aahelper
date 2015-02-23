@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_payouttitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff647a97"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_payoutdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="11sp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_payouttotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="11sp"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/rl_payouttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_payoutimage"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/tv_payoutname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_payoutimage"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            />
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:id="@+id/tv_payuserandpaytype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_payoutname"
+            android:layout_toRightOf="@id/iv_payoutimage"
+            />
+    </RelativeLayout>
+</RelativeLayout>

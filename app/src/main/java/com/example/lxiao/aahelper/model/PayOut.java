@@ -1,12 +1,13 @@
 package com.example.lxiao.aahelper.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * Created by U3 on 2015/2/15.
  */
-public class PayOut {
+public class PayOut implements Serializable{
     private int PayOutId;
     private int pBookId;
     private String pBookName;
@@ -80,11 +81,11 @@ public class PayOut {
         PayWay = payWay;
     }
 
-    public int getPayMean() {
+    public String getPayMean() {
         return PayMean;
     }
 
-    public void setPayMean(int payMean) {
+    public void setPayMean(String payMean) {
         PayMean = payMean;
     }
 
@@ -128,7 +129,7 @@ public class PayOut {
         DeleteState = deleteState;
     }
 
-    private int PayMean;
+    private String PayMean;
     private String PayComment;
     private String PayUserId;
     private String pPath;

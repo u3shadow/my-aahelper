@@ -27,15 +27,15 @@ public class SQLiteDALpayout extends SQLiteDALbase {
         PayOut mpayout = new PayOut();
         mpayout.setPayOutId(pcursor.getInt(pcursor.getColumnIndex("PayOutId")));
         mpayout.setpBookId(pcursor.getInt((pcursor.getColumnIndex("pBookId"))));
-        mpayout.setpBookName((pcursor.getString(pcursor.getColumnIndex("pBookName"))));
+        mpayout.setpBookName((pcursor.getString(pcursor.getColumnIndex("BookName"))));
         mpayout.setpTypeId(pcursor.getInt((pcursor.getColumnIndex("pTypeId"))));
-        mpayout.setpTypeName((pcursor.getString(pcursor.getColumnIndex("pTypeName"))));
-        mpayout.setpPath((pcursor.getString(pcursor.getColumnIndex("pPath"))));
+        mpayout.setpTypeName((pcursor.getString(pcursor.getColumnIndex("TypeName"))));
+        mpayout.setpPath((pcursor.getString(pcursor.getColumnIndex("Path"))));
         mpayout.setPayWay(pcursor.getInt((pcursor.getColumnIndex("PayWay"))));
         mpayout.setAmount(new BigDecimal(pcursor.getString(((pcursor.getColumnIndex("Amount"))))));
         Date _PayOutDate = DateTools .getDate(pcursor.getString(pcursor.getColumnIndex("PayDate")), "yyyy-MM-dd");
         mpayout.setPayDate(_PayOutDate);
-        mpayout.setPayMean(pcursor.getInt(pcursor.getColumnIndex("PayMean")));
+        mpayout.setPayMean(pcursor.getString(pcursor.getColumnIndex("PayMean")));
         mpayout.setPayUserId((pcursor.getString(pcursor.getColumnIndex("PayUserId"))));
         mpayout.setPayComment((pcursor.getString(pcursor.getColumnIndex("PayComment"))));
         Date _CreateDate = DateTools.getDate(pcursor.getString(pcursor.getColumnIndex("CreateDate")), "yyyy-MM-dd HH:mm:ss");
@@ -57,14 +57,14 @@ public class SQLiteDALpayout extends SQLiteDALbase {
         StringBuilder s_CreateTableScript = new StringBuilder();
 
         s_CreateTableScript.append("		Create  TABLE PayOut(");
-        s_CreateTableScript.append("				[PayOutID] integer PRIMARY KEY AUTOINCREMENT NOT NULL");
+        s_CreateTableScript.append("				[PayOutId] integer PRIMARY KEY AUTOINCREMENT NOT NULL");
         s_CreateTableScript.append("				,[CreateDate] datetime NOT NULL");
         s_CreateTableScript.append("				,[DeleteState] integer NOT NULL");
         s_CreateTableScript.append("				,[pBookId] integer NOT NULL");
         s_CreateTableScript.append("				,[pTypeId] integer NOT NULL");
         s_CreateTableScript.append("				,[Amount] decimal");
         s_CreateTableScript.append("				,[PayWay] integer NOT NULL");
-        s_CreateTableScript.append("				,[PayMean] integer NOT NULL");
+        s_CreateTableScript.append("				,[PayMean] text NOT NULL");
         s_CreateTableScript.append("				,[PayComment] text");
         s_CreateTableScript.append("				,[PayUserId] text NOT NULL");
         s_CreateTableScript.append("				,[PayDate] datetime NOT NULL");

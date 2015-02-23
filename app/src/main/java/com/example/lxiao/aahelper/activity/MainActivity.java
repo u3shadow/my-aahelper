@@ -80,6 +80,11 @@ public class MainActivity extends ActivityFrame implements SliderMenuView.OnSlid
                 openactivity(ActivityPayOutEditorAdd.class);
                 return ;
             }
+            if(_menuname.equals(getString(R.string._ssearch)))
+            {
+                openactivity(ActivityPayOut.class);
+                return ;
+            }
         }
     }
 }
