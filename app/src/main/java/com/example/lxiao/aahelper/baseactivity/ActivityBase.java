@@ -2,6 +2,7 @@ package com.example.lxiao.aahelper.baseactivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
@@ -15,6 +16,8 @@ import java.lang.reflect.Field;
  * Created by U3 on 2015/2/5.
  */
 public class ActivityBase extends Activity{
+    private ProgressDialog mprogressdialog ;
+
     public void showmsg(String msg)
     {
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
@@ -50,5 +53,16 @@ public class ActivityBase extends Activity{
                 .setNeutralButton(getString(R.string._sdeleteuser),mlistener)
                 .setNegativeButton(getString(R.string._scanceldeletebutton),null)
                 .show();
+    }
+    public void showprogressdialog(int ptitleid, int pmessageid)
+    {
+        mprogressdialog = new ProgressDialog(this);
+        mprogressdialog.setTitle(getString(ptitleid));
+        mprogressdialog.setMessage(getString(pmessageid));
+        mprogressdialog.show();
+    }
+    public void dismissprogressdialog()
+    {
+        mprogressdialog.dismiss();
     }
 }

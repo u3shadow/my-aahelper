@@ -106,6 +106,8 @@
     <string name="ButtonTextChange">更正</string>
     <string name="ButtonTextOk">确定</string>
 
+    <string name="_statistictitle">正在统计</string>
+    <string name="_sstatisticwait">请稍候</string>
     <string-array name="payouttype">
         <item>均分</item>
         <item>借贷</item>
@@ -144,4 +146,8 @@
     <string-array name="_spayout">
         <item>切换账本</item>
     </string-array>
+    <string-array name="_sstatistic">
+        <item>切换账本</item>
+    </string-array>
+
 </resources>
