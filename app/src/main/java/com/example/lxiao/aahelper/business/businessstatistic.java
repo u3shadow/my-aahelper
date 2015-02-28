@@ -50,11 +50,10 @@ public class businessstatistic extends businessbase {
         //save total statistic
         List<statistic> _liststatistictotal = new ArrayList<statistic>();
         String _result = "";
-        for(int i = 0;i < _liststatistic.size();i++)
-        {
+        for (int i = 0; i < _liststatistic.size(); i++) {
             //get a statistic message
             statistic _statistic = _liststatistic.get(i);
-            _result += _statistic.payuserid+"#"+_statistic.consumeruserid+"#"+_statistic.cost+"\r\n";
+            _result += _statistic.payuserid + "#" + _statistic.consumeruserid + "#" + _statistic.cost + "\r\n";
             //save current payuser id
             String _currentpayuserid = _statistic.payuserid;
 
@@ -67,25 +66,20 @@ public class businessstatistic extends businessbase {
             _liststatistictmp.add(_statistictemp);
             //count next index
             int _nextindex;
-            if((i + 1) < _liststatistic.size())
-            {
+            if ((i + 1) < _liststatistic.size()) {
                 _nextindex = i + 1;
-            }
-           else{
+            } else {
                 _nextindex = i;
             }
-            if(!_currentpayuserid.equals(_liststatistic.get(_nextindex).payuserid)||_nextindex == i)
-            {
-                for(int j = 0; j < _liststatistictmp.size();j++)
-                {
-                        statistic _statistictotal = _liststatistictmp.get(j);
-                        int _index = getPositionByConsumerUserId(_liststatistictotal,_statistictotal.payuserid,_statistictotal.consumeruserid);
-                        if(_index != -1)
-                        {
-                            _liststatistictotal.get(_index).cost = _liststatistictotal.get(_index).cost.add(_statistictotal.cost);
-                        }else{
-                            _liststatistictotal.add(_statistictotal);
-                        }
+            if (!_currentpayuserid.equals(_liststatistic.get(_nextindex).payuserid) || _nextindex == i) {
+                for (int j = 0; j < _liststatistictmp.size(); j++) {
+                    statistic _statistictotal = _liststatistictmp.get(j);
+                    int _index = getPositionByConsumerUserId(_liststatistictotal, _statistictotal.payuserid, _statistictotal.consumeruserid);
+                    if (_index != -1) {
+                        _liststatistictotal.get(_index).cost = _liststatistictotal.get(_index).cost.add(_statistictotal.cost);
+                    } else {
+                        _liststatistictotal.add(_statistictotal);
+                    }
                 }
                 _liststatistictmp.clear();
             }
@@ -128,19 +122,16 @@ public class businessstatistic extends businessbase {
                     //get payout user number
                     int _payoutusernumber = _payoutusername.length;
                     _cost = _payout.getAmount().divide(new BigDecimal(_payoutusernumber), 2, BigDecimal.ROUND_HALF_EVEN);
-                }else
-                {
+                } else {
                     _cost = _payout.getAmount();
                 }
-                for(int j = 0;j < _payoutuserid.length;j++)
-                {
+                for (int j = 0; j < _payoutuserid.length; j++) {
                     //if is lend, skip first user
-                    if(_payouttype.equals(_payouttypearray[1]) &&j == 0 )
-                    {
+                    if (_payouttype.equals(_payouttypearray[1]) && j == 0) {
                         continue;
                     }
                     // get a staitstic
-                    statistic _statistic =  new statistic();
+                    statistic _statistic = new statistic();
                     _statistic.payuserid = _payoutusername[0];
                     _statistic.consumeruserid = _payoutusername[j];
                     _statistic.setmpayouttype(_payouttype);

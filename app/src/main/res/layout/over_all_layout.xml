@@ -10,11 +10,10 @@
         layout="@layout/headlayout"></include>
 
 
-
     <include
         android:id="@+id/bottomlayout1"
-        layout="@layout/bottomlayout"
-></include>
+        layout="@layout/bottomlayout"></include>
+
     <LinearLayout
         android:id="@+id/maincenterlayout"
         android:layout_width="match_parent"

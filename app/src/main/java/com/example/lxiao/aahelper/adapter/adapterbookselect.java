@@ -28,7 +28,7 @@ public class adapterbookselect extends  AdapterBase{
     {
         this(pcontext, null);
         businessbook _businessbook = new businessbook(pcontext);
-        List _list = _businessbook.getbooks("");
+        List _list = _businessbook.getbooks(" And DeleteState = -1");
         setlist(_list);
     }
 

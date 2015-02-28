@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Aaheper.iml" filepath="$PROJECT_DIR$/Aaheper.iml" />
       <module fileurl="file://$PROJECT_DIR$/aahelper.iml" filepath="$PROJECT_DIR$/aahelper.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/my-aahelper.iml" filepath="$PROJECT_DIR$/my-aahelper.iml" />
     </modules>
   </component>
 </project>

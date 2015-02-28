@@ -101,6 +101,11 @@ public class ActivityBooks extends ActivityFrame implements SliderMenuView.OnSli
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
+            if(mbook.getIsDefault() == 1)
+            {
+                Toast.makeText(ActivityBooks.this,getString(R.string._snotdeletedefaultbook),Toast.LENGTH_LONG).show();
+                return;
+            }
             boolean isdeleted = mbusiness.hidebookbyid(mbook.getBookId());
             if(isdeleted)
             {

@@ -89,6 +89,7 @@
     <string name="_sselectpaytype">请选择消费类型</string>
     <string name="_sselectuser">请选择消费人</string>
     <string name="_spayouttitle">账本：《%1$s》--共有%2$s笔消费</string>
+    <string name="_snotdeletedefaultbook">不能删除默认账本</string>
     <string name="_spayoutdelete">删除消费</string>
     <string name="_sdeletepayout">删除</string>
 

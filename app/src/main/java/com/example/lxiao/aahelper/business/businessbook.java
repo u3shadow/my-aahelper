@@ -79,7 +79,10 @@ public class businessbook extends businessbase {
 
     //delete book  by id use SQLiteDALbook deletebook(condition)
     public boolean deletebookbyid(int pid) {
+        businesspayout _businesspayout = new businesspayout(getcontext());
         String mcondition = "And BookId = " + pid;
+
+        _businesspayout.deletepayoutbybookid(pid);
         return mdal.deletebook(mcondition);
     }
 
@@ -134,6 +137,7 @@ public class businessbook extends businessbase {
     }
 
     public boolean hidebookbyid(int pid) {
+
         String condition = " BookId = " + pid;
         ContentValues _value = new ContentValues();
         _value.put("DeleteState", "0");

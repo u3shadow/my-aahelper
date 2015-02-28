@@ -51,9 +51,9 @@ public class SQLiteDALuser extends SQLiteDALbase {
         s_CreateTableScript.append("				,[CreateDate] datetime NOT NULL");
         s_CreateTableScript.append("				,[DeleteState] integer NOT NULL");
         s_CreateTableScript.append("				)");
-        Log.v("sk","datatablecreate1");
+        Log.v("sk", "datatablecreate1");
         qdatabase.execSQL(s_CreateTableScript.toString());
-        Log.v("sk","datatablecreate2");
+        Log.v("sk", "datatablecreate2");
         initdefaultdata(qdatabase);
     }
 
@@ -89,8 +89,9 @@ public class SQLiteDALuser extends SQLiteDALbase {
     public void updateuser(String pcondition, User puser) {
         getdatabase().update(GetTableNameAndPk()[0], getcontentvalue(puser), pcondition, null);
     }
-    public boolean updateuser(String pcondition,ContentValues values) {
-        return getdatabase().update(GetTableNameAndPk()[0],values, pcondition, null) > 0;
+
+    public boolean updateuser(String pcondition, ContentValues values) {
+        return getdatabase().update(GetTableNameAndPk()[0], values, pcondition, null) > 0;
     }
 
     //get user list by conditon use SQLiteBase getlist(condition) method
@@ -99,6 +100,7 @@ public class SQLiteDALuser extends SQLiteDALbase {
         String msql = "Select * From User Where 1=1 " + pcondition;
         return getlist(msql);
     }
+
     //init some data by get XML source and for call back
     protected void initdefaultdata(SQLiteDatabase pdatabase) {
         String[] mstring = getcontext().getResources().getStringArray(R.array._ainituser);
