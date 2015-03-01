@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by U3 on 2015/2/15.
  */
-public class PayOut implements Serializable{
+public class PayOut implements Serializable {
     private int PayOutId;
     private int pBookId;
     private String pBookName;

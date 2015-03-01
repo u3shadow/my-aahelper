@@ -125,7 +125,7 @@ public class ActivityBooks extends ActivityFrame implements SliderMenuView.OnSli
             ShowBookAddorEditDialog(null);
         }
     }
-    //显示修改或者新增用户的对话框
+    //显示修改或者新增账本的对话框
     public void ShowBookAddorEditDialog(Book pbook) {
         String Title;
         View _view = getlayoutinflater().inflate(R.layout.edit_or_add_book_layout, null);

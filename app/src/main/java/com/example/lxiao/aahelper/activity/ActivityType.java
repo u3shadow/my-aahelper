@@ -133,12 +133,8 @@ public class ActivityType extends ActivityFrame implements SliderMenuView.OnSlid
             case 2:
                 deletetype(mtype); //need improve
                 break;
-            case 3:
-               /* List<Type> _list = mbusiness.getnothidetypebyparentid(mtype.getTypeId());
-               Intent _intent = new Intent();
-                _intent.putExtra("Total",(Serializable)_list);
-                _intent.setClass(this,ActivityTypeChart.class);
-                startActivity(_intent);*/ //about chart
+
+
             default:
                 break;
         }

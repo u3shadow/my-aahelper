@@ -124,7 +124,7 @@ public class ActivityStatistic extends ActivityFrame implements SliderMenuView.O
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Book _book = (Book) ((Adapter) parent.getAdapter()).getItem(position);
+            mbook = (Book) ((Adapter) parent.getAdapter()).getItem(position);
             binddata();
             _dialog.dismiss();
         }

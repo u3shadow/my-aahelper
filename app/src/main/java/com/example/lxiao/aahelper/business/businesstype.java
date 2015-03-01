@@ -123,13 +123,13 @@ public class businesstype extends businessbase {
         return isupdate;
     }
 
-    public boolean setasdefault(int pid) {
+   /* public boolean setasdefault(int pid) {
         String condition = " TypeId = " + pid;
         ContentValues _value = new ContentValues();
         _value.put("IsDefault", "0");
         boolean isupdate = mdal.updatetype(condition, _value);
         return isupdate;
-    }
+    }*/
     public boolean hidetypebypath(String ppath)
     {
         String _condition = "Path Like '"+ppath+"%'";

@@ -485,9 +485,6 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
         @Override
         public void onItemClick(AdapterView p_AdapterView, View arg1, int p_Position,
                                 long arg3) {
-//			ModelUser _ModelUser = (ModelUser)((Adapter)p_AdapterView.getAdapter()).getItem(p_Position);
-//			((OnListSelectListener)ActivityBase.this).OnSelected(_ModelUser,"User");
-//			m_AlertDialog.dismiss();
 
             String _PayoutTypeArr[] = getResources().getStringArray(R.array.payouttype);
             User _ModelUser = (User) ((Adapter) p_AdapterView.getAdapter()).getItem(p_Position);
@@ -509,15 +506,6 @@ public class ActivityPayOutEditorAdd extends ActivityFrame implements View.OnCli
                     mItemColor.add(_Main);
                     mUserSelectedList.add(_ModelUser);
                 }
-
-//				if(m_PayoutType.equals(_PayoutTypeArr[1]))
-//				{
-//					if(m_UserSelectedList.size() == 2)
-//					{
-//						((OnListSelectListener)ActivityBase.this).OnSelected(m_UserSelectedList,"User");
-//						m_AlertDialog.dismiss();
-//					}
-//				}
                 return;
             }
 
